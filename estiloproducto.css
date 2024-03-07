@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 10;
+    padding: 0;
+}
+
+header {
+    background-color: #025564;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+padding: 20px;
+}
+
+section {
+margin-bottom: 20px;
+
+}
+h2 {
+    margin-top: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+td{
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 300px;
+}
+nav li {
+    display: inline;
+    margin-right: 10px; 
+    text-align:end
+}
+
+img {
+    width: 100%;}
+    
+    .imagen-uniforme {
+        width: 200px;
+        height: 200px;
+    }
+
+/* Agrega cualquier estilo para la barra de búsqueda y los resultados según sea necesario, por ejemplo: */
+.contenedor-busqueda {
+    margin-top: 20px;
+}
+
+#barra-de-busqueda {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 300px; /* Ajusta el ancho como desees */
+}
+
+.productos article {
+    /* Agrega estilos para productos individuales */
+    margin-bottom: 15px;
+}
+
+.productos article.oculto {
+    display: none; /* Oculta los productos que no coinciden con la búsqueda */
+}
+
+
+
+h3 {
+    margin-top: 10px;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+p {
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #d40909;
+    color: #fff;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
