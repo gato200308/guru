@@ -291,3 +291,43 @@ main {
 .img-wha{
 width: 50px;
 height:50px;}
+
+h{  display: flex;
+    align-items: center;
+    justify-content: space-around;}
+
+.cuentas{
+    width: 300px; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: 300px; /* Permite que la altura se ajuste automáticamente según el ancho */
+    border-radius: 50%; /* Hace que la imagen tenga forma circular */
+    position: absolute; /* Posiciona la imagen absolutamente dentro del contenedor */
+    top: 40%; /* Mueve la imagen hacia abajo 50% del contenedor */
+    left: 15%; /* Mueve la imagen hacia la derecha 50% del contenedor */
+    transform: translate(-50%, -50%); /* Centra la imagen dentro del contenedor */}
+
+    h2{
+        font-size: 16px; /* Tamaño de fuente para el nombre */
+  font-weight: bold; /* Establece el peso de la fuente como negrita */
+        margin-top: 25%;
+        padding-left: 4%;
+    }
+
+.gato{
+font-size: 16px;
+font-weight: bolder;
+margin-top: 0%;
+padding-left: 4%;}
+.imagen-contacto
+{
+    width: 200px; /* Ajusta el ancho de la imagen al 100% del contenedor */
+    height: 200px; /* Permite que la altura se ajuste automáticamente según el ancho */
+    border-radius: 80%; /* Hace que la imagen tenga forma circular */
+    position: absolute; /* Posiciona la imagen absolutamente dentro del contenedor */
+    top: 40%; /* Mueve la imagen hacia abajo 50% del contenedor */
+    left: 15%; /* Mueve la imagen hacia la derecha 50% del contenedor */
+    transform: translate(-50%, -50%); /* Centra la imagen dentro del contenedor */}
+
+.contacto{
+    font-size: 16px; /* Tamaño de fuente para el nombre */
+    font-weight: bold; /* Establece el peso de la fuente como negrita */
+        margin-top: 20%;}
