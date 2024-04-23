@@ -57,127 +57,9 @@ main {
     max-width: 100px; /* Ajusta el tamaño según tu necesidad */
     margin-right: 0px; /* Espaciado entre la imagen y el texto */
 }
-
-#calendar {
-    width: 80%;
-    margin: 40px auto;
-    border: 1px solid #ffffff;
-    padding: 20px;
-
-        background-color: #025564ce;
-        color: rgb(255, 255, 255);
-    }
-
-    /* Cambiar color de los números de día */
-    .fc-daygrid-day-number {
-        color: rgb(255, 255, 255);
-    }
-
-    /* Cambiar color de los nombres de los días (Lunes, Martes, ...) */
-    .fc-daygrid-day-top {
-        color: rgb(255, 255, 255);
-    }
-
-    /* Cambiar color del evento en el calendario */
-    .fc-event {
-        background-color: #87b8b9;
-        border-color: #87b8b9;
-        color: #ffffff;
-    }
-
-    /* Estilizar el encabezado del calendario */
-    .fc-header-toolbar {
-        color: #ffffff;
-    }
-
-    /* Cambiar el estilo de los botones del encabezado */
-    .fc-button {
-        background-color: #025564;
-        color: #ffffff;
-    }
-
-    /* Ajustar el espaciado entre los eventos */
-    .fc-event {
-        margin-bottom: 10px;
-    }
-
-    /* Cambiar el color de fondo al pasar el ratón sobre un día */
-    .fc-day:hover {
-        background-color: #87b8b9;
-    }
-
-    /* Personalizar el estilo del popover de eventos */
-    .fc-popover {
-        background-color: #ffffff;
-        color: #025564;
-        border-color: #ffffff;
-    }
-
-    /* Cambiar el estilo del borde de la vista de mes */
-    .fc-dayGridMonth-view {
-        border: 2px solid #ffffff;
-    }
-
-    .container {
-        width: 80%;
-        margin: 0 auto; /* Centra el contenedor horizontalmente */
-        background-color: transparent; /* Fondo transparente */
-        display: flex;
-        justify-content: center; /* Centra horizontalmente */
-        align-items: center; /* Centra verticalmente */
-    }
-    
-    /* Columna de la izquierda para la imagen */
-    .left-column, .right-column {
-        flex: 1; /* Ocupa el mismo espacio en el contenedor */
-        padding: 20px;
-        background-color: transparent; /* Fondo transparente */
-        text-align: center; /* Alinea el contenido en el centro */
-    }
-    
-    
-    
-    /* Estilo del texto */
-    .text-container {
-        color: #000000; /* Color del texto */
-        text-align: left;
-        height: auto;
-    }
-    
-    .button-container {
-        margin-top: 20px; /* Espacio entre el texto y el botón */
-    }
-
-    .button-container button {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #025564; /* Color de fondo del botón */
-        color: #ffffff; /* Color del texto del botón */
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .row-space {
-        margin-bottom: 20px; /* Ajusta la cantidad de espacio horizontal según tus necesidades */
-        display: block; /* Asegúrate de que ocupe todo el ancho disponible */
-    }
-
     form {
         max-width: 400px;
         margin: 0 auto;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 8px;
-        text-align: left;
-    }
-
-    input {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 16px;
     }
 
     input, select {
@@ -196,26 +78,12 @@ main {
     }
 
     button:hover {
-        background-color: #45a049;
+        background-color: #a4ad1e;
     }
 
-    #comentarios {
-        width: 100%; /* Hacer que ocupe el 100% del ancho disponible */
-        padding: 8px;
-        margin-bottom: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
     
-    #descripcion {
-        width: 100%; /* Hacer que ocupe el 100% del ancho disponible */
-        padding: 8px;
-        margin-bottom: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
+    
+    
 
     .agenda {
         max-width: 600px;
@@ -225,42 +93,7 @@ main {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     
-    #historial {
-        margin-bottom: 20px;
-    }
-
-    #amigos {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
     
-    .amigo {
-        width: 300px;
-        margin: 20px;
-        padding: 10px;
-        background-color: white;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-    #perfil {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-    
-    
-    
-    .info {
-        max-width: 500px;
-        text-align: left;
-    }
-    
-    #actividades {
-        margin-top: 20px;
-        text-align: center;
-    }
-
     footer {
         background-color: #025564;
         color: white;
@@ -278,6 +111,7 @@ main {
     .imagen-uniforme {
         width: 150px;
         height: 150px;
+        
     }
     .imagen-contacto{
     width: 200px;
@@ -292,7 +126,7 @@ main {
 width: 50px;
 height:50px;}
 
-h{  display: flex;
+h3,p{  display: flex;
     align-items: center;
     justify-content: space-around;}
 
@@ -340,4 +174,21 @@ h{  display: flex;
     text-align: center; /* Centra el texto horizontalmente */
     position: relative; /* Establece la posición relativa para el texto */
     top: -20px; /* Desplaza el texto hacia arriba */
+}
+
+.button1{
+    text-align: center;
+}
+
+.imagen-uniforme{
+    position: relative; /* Establece la posición relativa para las imágenes */
+    margin: 0 auto;
+}
+
+embed {
+    width: 100%; /* El PDF ocupará todo el ancho disponible */
+    max-width: 100%; /* Establece un ancho máximo para el PDF */
+    height: 1000px; /* Establece una altura fija para el PDF */
+    display: block; /* Asegura que el embed se muestre como un bloque */
+    margin: 0 auto; /* Centra el PDF horizontalmente */
 }
