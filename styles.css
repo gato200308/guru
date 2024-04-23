@@ -296,27 +296,30 @@ h{  display: flex;
     align-items: center;
     justify-content: space-around;}
 
-.cuentas{
-    width: 300px; /* Ajusta el ancho de la imagen al 100% del contenedor */
-    height: 300px; /* Permite que la altura se ajuste automáticamente según el ancho */
-    border-radius: 50%; /* Hace que la imagen tenga forma circular */
-    position: absolute; /* Posiciona la imagen absolutamente dentro del contenedor */
-    top: 40%; /* Mueve la imagen hacia abajo 50% del contenedor */
-    left: 15%; /* Mueve la imagen hacia la derecha 50% del contenedor */
-    transform: translate(-50%, -50%); /* Centra la imagen dentro del contenedor */}
-
-    h2{
-        font-size: 16px; /* Tamaño de fuente para el nombre */
-  font-weight: bold; /* Establece el peso de la fuente como negrita */
-        margin-top: 25%;
-        padding-left: 4%;
+    .cuentas img {
+        width: 150px; /* Ancho de la imagen */
+        height: 150px; /* Altura de la imagen */
+        border-radius: 50%; /* Hace que la imagen tenga forma circular */
+        margin-bottom: 10px; /* Espacio inferior entre la imagen y el texto */
     }
+    
+    
+    .cuentas {
+        width: 200px; /* Ancho de la imagen */
+        height: 200px; /* Altura de la imagen */
+        border-radius: 50%; /* Hace que la imagen tenga forma circular */
+        margin-bottom: 0 auto; /* Espacio inferior entre la imagen y el texto */
+    }
+    
+    h2, .gato {
+        font-size: 16px; /* Tamaño de fuente para el nombre */
+        font-weight: bold; /* Establece el peso de la fuente como negrita */
+        margin: 0; /* Elimina el margen */
+        padding: 0; /* Elimina el padding */
+    }
+    
+    
 
-.gato{
-font-size: 16px;
-font-weight: bolder;
-margin-top: 0%;
-padding-left: 4%;}
 .imagen-contacto,
 .imagen-cesar,
 .imagen-santiago,
