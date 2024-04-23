@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
     margin: 10;
@@ -18,87 +14,74 @@ header {
     align-items: center;
 }
 
-main {
-padding: 20px;
-}
-
-section {
-margin-bottom: 20px;
-
-}
-h2 {
-    margin-top: 0;
-}
-
-ul {
-    list-style: none;
+nav ul {
+    list-style-type: none;
+    margin: 0;
     padding: 0;
+    text-align: right;
+    text-align:end
 }
 
-td{
-    display: inline-block;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    width: 300px;
-}
+
 nav li {
     display: inline;
     margin-right: 10px; 
     text-align:end
 }
 
-img {
-    width: 100%;}
-    
-    .imagen-uniforme {
-        width: 200px;
-        height: 200px;
-    }
-
-/* Agrega cualquier estilo para la barra de búsqueda y los resultados según sea necesario, por ejemplo: */
-.contenedor-busqueda {
-    margin-top: 20px;
+nav li:not(:last-child):after {
+    content: '|'; 
+    margin-left: 10px; 
+    color: rgb(66, 66, 66); 
+    text-align:end
 }
 
-#barra-de-busqueda {
-    padding: 10px;
-    border: 1px solid #ccc;
-    width: 300px; /* Ajusta el ancho como desees */
-}
-
-.productos article {
-    /* Agrega estilos para productos individuales */
-    margin-bottom: 15px;
-}
-
-.productos article.oculto {
-    display: none; /* Oculta los productos que no coinciden con la búsqueda */
-}
-
-
-
-h3 {
-    margin-top: 10px;
-}
 a {
     text-decoration: none;
-    color: white;
-}
-p {
-    margin-bottom: 10px;
+    color: rgb(0, 0, 0);
 }
 
-button {
-    background-color: #d40909;
-    color: #fff;
-    border: 1px solid #ddd;
-    padding: 5px 10px;
+.banner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img {
+    max-width: 100px; /* Ajusta el tamaño según tu necesidad */
+    margin-right: 0px; /* Espaciado entre la imagen y el texto */
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Resto de tu CSS */
+body {
+font-family: 'Roboto', sans-serif;
+font-size: 20px;
+line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto; /* Esto asegura que la imagen conserve su relación de aspecto */
+}
+
+h1 {
     text-align: center;
 }
+h2 {
+    text-align: center;
+}
+h3 {
+    text-align: center;
+}
+h4 {
+    text-align: center;
+}
+
+
+    
+    
+    
+    
+    
+    
