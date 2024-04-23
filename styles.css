@@ -317,61 +317,24 @@ font-size: 16px;
 font-weight: bolder;
 margin-top: 0%;
 padding-left: 4%;}
-.imagen-contacto
-{
-    width: 200px; /* Ajusta el ancho de la imagen al 100% del contenedor */
-    height: 200px; /* Permite que la altura se ajuste automáticamente según el ancho */
+.imagen-contacto,
+.imagen-cesar,
+.imagen-santiago,
+.imagen-jose {
+    width: 200px; /* Ajusta el ancho de la imagen */
+    height: 200px; /* Ajusta la altura de la imagen */
     border-radius: 50%; /* Hace que la imagen tenga forma circular */
-    position: absolute; /* Posiciona la imagen absolutamente dentro del contenedor */
-    top: 40%; /* Mueve la imagen hacia abajo 50% del contenedor */
-    left: 15%; /* Mueve la imagen hacia la derecha 50% del contenedor */
-    transform: translate(-50%, -50%); /* Centra la imagen dentro del contenedor */}
+    position: relative; /* Establece la posición relativa para las imágenes */
+    margin: 0 auto; /* Centra horizontalmente las imágenes */
+}
 
-.contacto{
+.contacto,
+.contacto-cesar,
+.contacto-santiago,
+.contacto-jose {
     font-size: 16px; /* Tamaño de fuente para el nombre */
     font-weight: bold; /* Establece el peso de la fuente como negrita */
-        margin-top: 20%;}
-.imagen-cesar{
-    width: 200px; /* Ajusta el ancho de la imagen al 100% del contenedor */
-    height: 200px; /* Permite que la altura se ajuste automáticamente según el ancho */
-    border-radius: 50%; /* Hace que la imagen tenga forma circular */
-    position: absolute; /* Posiciona la imagen absolutamente dentro del contenedor */
-    top: 115%; /* Mueve la imagen hacia abajo 50% del contenedor */
-    left: 15%; /* Mueve la imagen hacia la derecha 50% del contenedor */
-    transform: translate(-50%, -50%); /* Centra la imagen dentro del contenedor */
+    text-align: center; /* Centra el texto horizontalmente */
+    position: relative; /* Establece la posición relativa para el texto */
+    top: -20px; /* Desplaza el texto hacia arriba */
 }
-.contacto-cesar{
-    font-size: 16px;
-    font-weight: bolder;
-    margin-top: 86%;
-    padding-left: 4%;
-}
-.imagen-santiago{
-width: 200px; /* Ajusta el ancho de la imagen al 100% del contenedor */
-height: 200px; /* Permite que la altura se ajuste automáticamente según el ancho */
-border-radius: 50%; /* Hace que la imagen tenga forma circular */
-position: absolute; /* Posiciona la imagen absolutamente dentro del contenedor */
-top: 180%; /* Mueve la imagen hacia abajo 50% del contenedor */
-left: 15%; /* Mueve la imagen hacia la derecha 50% del contenedor */
-transform: translate(-50%, -50%); /* Centra la imagen dentro del contenedor */
-}
-.contacto-santiago{
-    font-size: 16px;
-    font-weight: bolder;
-    margin-top: 99%;
-    padding-left: 4%;
-}
-.imagen-jose{
-    width: 200px; /* Ajusta el ancho de la imagen al 100% del contenedor */
-    height: 200px; /* Permite que la altura se ajuste automáticamente según el ancho */
-    border-radius: 50%; /* Hace que la imagen tenga forma circular */
-    position: absolute; /* Posiciona la imagen absolutamente dentro del contenedor */
-    top: 240%; /* Mueve la imagen hacia abajo 50% del contenedor */
-    left: 15%; /* Mueve la imagen hacia la derecha 50% del contenedor */
-    transform: translate(-50%, -50%); /* Centra la imagen dentro del contenedor */
-    }
-    .contacto-jose{
-        font-size: 16px;
-        font-weight: bolder;
-        margin-top: 80%;
-        padding-left: 4%;}
