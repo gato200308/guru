@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 10;
     padding: 0;
-    background-color: #FFFFCC;
+    background-color: #3a3737;
 }
 
 header {
@@ -26,20 +26,20 @@ nav ul {
 
 nav li {
     display: inline;
-    margin-right: 10px; 
+    margin-right: 100px; 
     text-align:end
 }
 
 nav li:not(:last-child):after {
     content: '|'; 
-    margin-left: 10px; 
+    margin-left: 100px; 
     color: rgb(66, 66, 66); 
     text-align:end
 }
 
 a {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 .banner-content {
@@ -66,18 +66,11 @@ img {
     height: auto; /* Esto asegura que la imagen conserve su relación de aspecto */
 }
 
-h1 {
+h1, h2, h3, h4,p {
     text-align: center;
+    color: #FFFFFF; /* Código hexadecimal para el color blanco */
 }
-h2 {
-    text-align: center;
-}
-h3 {
-    text-align: center;
-}
-h4 {
-    text-align: center;
-}
+
 footer {
     background-color: #ddd590;
     color: white;
