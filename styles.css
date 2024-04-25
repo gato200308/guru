@@ -2,11 +2,14 @@ body {
     font-family: Arial, sans-serif;
     margin: 10;
     padding: 0;
+    background-color: #FFFFCC; /* Código hexadecimal para el tono de amarillo */
 }
 
+
+
 header {
-    background-color: #025564;
-    color: white;
+    background-color: #ddd590;
+    color: rgb(5, 2, 2);
     text-align: center;
     padding: 1em;
     display: flex;
@@ -95,7 +98,7 @@ main {
     
     
     footer {
-        background-color: #025564;
+        background-color: #ddd590;
         color: white;
         text-align: center;
         padding: 1em;
