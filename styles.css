@@ -25,13 +25,13 @@ nav ul {
 
 nav li {
     display: inline;
-    margin-right: 10px; 
+    margin-right: 100px; 
     text-align:end
 }
 
 nav li:not(:last-child):after {
     content: '|'; 
-    margin-left: 10px; 
+    margin-left: 50px; 
     color: rgb(66, 66, 66); 
     text-align:end
 }
