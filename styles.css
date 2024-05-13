@@ -150,6 +150,7 @@ height:50px;}
         font-weight: bold; /* Establece el peso de la fuente como negrita */
         margin: 0; /* Elimina el margen */
         padding: 0; /* Elimina el padding */
+        
     }
     
     
@@ -185,3 +186,4 @@ height:50px;}
     margin: 0 auto;
 }
 
+h3,h2,p{color: #fff;}
