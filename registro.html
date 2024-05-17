@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="imagenes\icono app2.jpg" type="image/x-icon">
-    <title> guru</title>
+    <title>guru</title>
 </head>
 
 <body style="background-color: #ffffff;">
@@ -28,7 +28,11 @@
     <div class="left-column">
         <div class="agenda">
             <h1>Formulario de Registro</h1>
-                <form>
+            <form action="conexion.php" method="POST" enctype="multipart/form-data">
+
+                    <label for="identificacion">identificacion:</label>
+                    <input type="text" id="identificacion" name="identificacion" required>
+
                     <label for="nombre">Nombres:</label>
                     <input type="text" id="nombre" name="nombre" required>
 
@@ -41,7 +45,7 @@
                     <label for="telefono">Número de Teléfono:</label>
                     <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" required>
 
-                    <label for="genero">Genero:</label>
+                    <label for="genero">Género:</label>
                     <select id="genero" name="genero" required>
                         <option value="1">Seleccione una opción</option>
                         <option value="2">Femenino</option>
@@ -49,9 +53,6 @@
                         <option value="4">Prefiero no decirlo</option>
                         <option value="5">Otro</option>
                     </select>
-
-                    <label for="foto">Subir Foto:</label>
-                    <input type="file" id="foto" name="foto" accept="image/*">
 
                     <label for="correo">Correo Electrónico:</label>
                     <input type="email" id="correo" name="correo" required>
@@ -63,8 +64,8 @@
                 </form>
         </div>
         <footer>
-            <p>&copy;  2024 Guru Sales</p>
+            <p>&copy; 2024 Guru Sales</p>
         </footer>
-        
+    </div>
 </body>
 </html>
