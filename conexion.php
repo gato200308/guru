@@ -26,20 +26,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena = $_POST['contrasena'];
 
     // Prepara y ejecuta la consulta SQL para insertar los datos en la tabla
-    $sql = "INSERT INTO usuario (identificacion,nombres, apellidos, fecha_nacimiento, telefono, genero, correo, contrasena)
+    $sql = "INSERT INTO usuario (identificacion, nombres, apellidos, fecha_nacimiento, telefono, genero, correo, contrasena)
     VALUES ('$identificacion','$nombre', '$apellido', '$fechaNacimiento', '$telefono', '$genero', '$correo', '$contrasena')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Registro exitoso";
+        // Cierra la conexión a la base de datos
+        $conn->close();
+        // Redirige a la página de inicio de sesión
+        header("Location: sesion.html");
+        exit();
     } else {
         echo "Error al registrar: " . $conn->error;
     }
 
-    // Cierra la conexión a la base de datos
-    $conn->close();
 } else {
     // Si no se reciben datos por POST, redirige a la página de registro
-    header("Location: registro.html");
+    header("Location: sesion.html");
     exit();
 }
 ?>
