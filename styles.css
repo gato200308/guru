@@ -11,22 +11,17 @@ header {
     padding: 1em;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .navegacion-principal {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+} 
 
-@media(min-width: 800px) {
-    .navegacion-principal {
-        flex-direction: row;
-    }
-}
-.navegacion-principal {
-    
-}
+
+
 .navegacion-principal a {
     color: white;
     text-decoration: none;
