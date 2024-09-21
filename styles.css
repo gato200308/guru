@@ -1,11 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 10;
+    margin: 0; /* Cambié a 0 para evitar problemas de margen */
     padding: 0;
-    background-color: #3a3737; /* Código hexadecimal para el tono de amarillo */
+    background-color: #3a3737; /* Color de fondo */
 }
-
-
 
 header {
     background-color: #ddd590;
@@ -17,42 +15,47 @@ header {
     align-items: center;
 }
 
-.navegacion-principal{
+.navegacion-principal {
     display: flex;
     flex-direction: column;
-    justify-content:space-between ;
+    justify-content: space-between;
 }
-@media(min-width: 768px){
-    .navegacion-principal{
-    flex-direction: row;
+
+@media(min-width: 768px) {
+    .navegacion-principal {
+        flex-direction: row;
     }
-    }
-    .navegacion-principal a{
-        color:white;
-        text-decoration: none;
-        font-size: 1.4rem;
-        font-weight: 700;
-        padding: 1rem;
-    }
+}
+
+.navegacion-principal a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
 nav li {
     display: inline;
-    margin-right: 100px; 
-    text-align:end
+    margin-right: 50px; /* Cambié a 50px para un espaciado más balanceado */
 }
 
 nav li:not(:last-child):after {
     content: ''; 
-    margin-left: 50px; 
+    margin-left: 20px; 
     color: rgb(66, 66, 66); 
-    text-align:end
 }
 
 a {
     text-decoration: none;
     color: rgb(255, 255, 255);
 }
-
 
 main {
     padding: 20px;
@@ -66,133 +69,123 @@ main {
 }
 
 .logo img {
-    max-width: 100px; /* Ajusta el tamaño según tu necesidad */
-    margin-right: 0px; /* Espaciado entre la imagen y el texto */
+    max-width: 100px; /* Tamaño máximo de la imagen */
+    margin-right: 0; 
 }
-    form {
-        max-width: 400px;
-        margin: 0 auto;
-    }
 
-    input, select {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 16px;
-    }
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
 
-    button {
-        background-color: #ddd590;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+}
 
-    button:hover {
-        background-color: #a4ad1e;
-    }
+button {
+    background-color: #ddd590;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-    
-    
-    
+button:hover {
+    background-color: #a4ad1e;
+}
 
-    .agenda {
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(180, 5, 5, 0.1);
-    }
-    
-    
-    footer {
-        background-color: #ddd590;
-        color: white;
-        text-align: center;
-        padding: 1em;
-    }
-    
-    td{
-        display: inline-block;
-        margin: 10px;
-        padding: 10px;
-        border: 0px solid #ddd;
-        width: 230px;
-    }
+.agenda {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(180, 5, 5, 0.1);
+}
+
+footer {
+    background-color: #ddd590;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+table {
+    width: 100%; /* Asegura que la tabla ocupe todo el ancho */
+}
+
+td {
+    padding: 10px;
+    width: 230px;
+    text-align: center; /* Centra el contenido */
+}
+
+.imagen-uniforme {
+    width: 150px;
+    height: 150px;
+    display: block; /* Para centrar la imagen */
+    margin: 0 auto; /* Centra la imagen */
+}
+
+/* Media queries para dispositivos más pequeños */
+@media (max-width: 768px) {
     .imagen-uniforme {
-        width: 150px;
-        height: 150px;
-        
+        object-fit: cover; /* Asegura que la imagen llene el espacio sin distorsionarse */
     }
-    .imagen-contacto{
-    width: 200px;
-    height:200;
-    display: inline-block;
-        margin: 10px;
-        padding: 10px;
-        width: 230px;
+    table {
+        width: 80%; /* Asegura que la tabla ocupe todo el ancho */
+    }
 }
 
-.img-wha{
-width: 50px;
-height:50px;}
+.img-wha {
+    width: 50px;
+    height: 50px;
+}
 
+.cuentas img {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    margin-bottom: 10px; 
+}
 
-    .cuentas img {
-        width: 150px; /* Ancho de la imagen */
-        height: 150px; /* Altura de la imagen */
-        border-radius: 50%; /* Hace que la imagen tenga forma circular */
-        margin-bottom: 10px; /* Espacio inferior entre la imagen y el texto */
-    }
-    
-    
-    .cuentas {
-        width: 200px; /* Ancho de la imagen */
-        height: 200px; /* Altura de la imagen */
-        border-radius: 50%; /* Hace que la imagen tenga forma circular */
-        margin-bottom: 0 auto; /* Espacio inferior entre la imagen y el texto */
-    }
-    
-    h2 {
-        font-size: 16px; /* Tamaño de fuente para el nombre */
-        font-weight: bold; /* Establece el peso de la fuente como negrita */
-        margin: 0; /* Elimina el margen */
-        padding: 0; /* Elimina el padding */
-        
-    }
-    
-    
+.cuentas {
+    width: 200px; 
+    height: 200px; 
+    border-radius: 50%; 
+    margin: 0 auto; 
+}
+
+h2, h3, p {
+    color: #fff; /* Color de texto */
+}
 
 .imagen-contacto,
 .imagen-cesar,
 .imagen-santiago,
 .imagen-jose {
-    width: 200px; /* Ajusta el ancho de la imagen */
-    height: 200px; /* Ajusta la altura de la imagen */
-    border-radius: 50%; /* Hace que la imagen tenga forma circular */
-    position: relative; /* Establece la posición relativa para las imágenes */
-    margin: 0 auto; /* Centra horizontalmente las imágenes */
+    width: 200px; 
+    height: 200px; 
+    border-radius: 50%; 
+    position: relative; 
+    margin: 0 auto; 
 }
 
 .contacto,
 .contacto-cesar,
 .contacto-santiago,
 .contacto-jose {
-    font-size: 16px; /* Tamaño de fuente para el nombre */
-    font-weight: bold; /* Establece el peso de la fuente como negrita */
-    text-align: center; /* Centra el texto horizontalmente */
-    position: relative; /* Establece la posición relativa para el texto */
-    top: -20px; /* Desplaza el texto hacia arriba */
+    font-size: 16px; 
+    font-weight: bold; 
+    text-align: center; 
+    position: relative; 
+    top: -20px; 
 }
 
-.button1{
+.button1 {
     text-align: center;
 }
 
-.imagen-uniforme{
-    position: relative; /* Establece la posición relativa para las imágenes */
-    margin: 0 auto;
-}
 
-h3,h2,p{color: #fff;}
