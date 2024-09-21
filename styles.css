@@ -20,7 +20,15 @@ header {
     justify-content: space-between;
 } 
 
-
+@media(max-width: 800px) {
+    .navegacion-principal {
+        flex-direction: column;
+    }
+    header {
+        background-color: #ddd590;}
+        footer {
+            background-color: #ddd590;}
+}
 
 .navegacion-principal a {
     color: white;
