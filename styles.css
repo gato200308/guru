@@ -17,14 +17,23 @@ header {
     align-items: center;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: right;
-    text-align:end
+.navegacion-principal{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between ;
 }
-
+@media(min-width: 768px){
+    .navegacion-principal{
+    flex-direction: row;
+    }
+    }
+    .navegacion-principal a{
+        color:white;
+        text-decoration: none;
+        font-size: 1.4rem;
+        font-weight: 700;
+        padding: 1rem;
+    }
 
 nav li {
     display: inline;
@@ -33,7 +42,7 @@ nav li {
 }
 
 nav li:not(:last-child):after {
-    content: '|'; 
+    content: ''; 
     margin-left: 50px; 
     color: rgb(66, 66, 66); 
     text-align:end

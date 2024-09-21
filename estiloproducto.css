@@ -15,6 +15,25 @@ header {
     align-items: center;
 }
 
+.navegacion-principal{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between ;
+}
+@media(min-width: 768px){
+    .navegacion-principal{
+    flex-direction: row;
+    }
+    }
+    .navegacion-principal a{
+        color:white;
+        text-decoration: none;
+        font-size: 1.4rem;
+        font-weight: 700;
+        padding: 1rem;
+    }
+
+
 nav ul {
     list-style-type: none;
     margin: 0;
