@@ -24,7 +24,6 @@ header {
 @media(min-width: 800px) {
     .navegacion-principal {
         flex-direction: row;
-        background-color: black;
     }
 }
 .navegacion-principal {
