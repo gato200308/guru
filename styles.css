@@ -21,13 +21,14 @@ header {
     justify-content: space-between;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 800px) {
     .navegacion-principal {
         flex-direction: row;
+        background-color: black;
     }
 }
 .navegacion-principal {
-    background-color: black;
+    
 }
 .navegacion-principal a {
     color: white;
