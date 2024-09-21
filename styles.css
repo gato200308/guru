@@ -26,11 +26,11 @@ header {
     }
     header {
         background-color: #ddd590;
-        min-height: 100vh;}
+        min-width: 100vh;}
         
         footer {
             background-color: #ddd590;
-            min-height: 100vh;}
+            min-width: 100vh;}
             
 }
 
