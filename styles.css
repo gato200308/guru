@@ -26,11 +26,11 @@ header {
     }
     header {
         background-color: #ddd590;
-        min-width: 100vh;}
+        height: 100vh; 
         
         footer {
             background-color: #ddd590;
-            min-width: 100vh;}
+            height: 100vh; 
             
 }
 
