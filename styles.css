@@ -127,7 +127,8 @@ td {
 /* Media queries para dispositivos más pequeños */
 @media (max-width: 768px) {
     .imagen-uniforme {
-        object-fit: cover; /* Asegura que la imagen llene el espacio sin distorsionarse */
+        object-fit:unset; /* Asegura que la imagen llene el espacio sin distorsionarse */
+        margin: 15px;
     }
     .navegacion-principal {
         display: flex;
@@ -140,10 +141,10 @@ td {
     header {
         background-color: #ddd590;
         color: rgb(255, 255, 255);
-        padding: 1.5em;
+        padding: 1em;
         display: flex;
         justify-content: space-between;
-        align-items: end;
+        align-items: center;
     }
 }
 
