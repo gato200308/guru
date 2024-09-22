@@ -20,19 +20,7 @@ header {
     justify-content: space-between;
 } 
 
-@media(max-width: 800px) {
-    .navegacion-principal {
-        flex-direction: column;
-    }
-    header {
-        background-color: #ddd590;
-        height: 100vh; }
-        
-        footer {
-            background-color: #ddd590;
-            height: 100vh;} 
-            
-}
+
 
 .navegacion-principal a {
     color: white;
