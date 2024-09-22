@@ -8,10 +8,10 @@ body {
 header {
     background-color: #ddd590;
     color: rgb(255, 255, 255);
-    padding: 1em;
+    padding: 5em;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
 }
 
 .navegacion-principal {
@@ -129,6 +129,11 @@ td {
     .imagen-uniforme {
         object-fit: cover; /* Asegura que la imagen llene el espacio sin distorsionarse */
     }
+    .navegacion-principal {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly
+    } 
     table {
         width: 80%; /* Asegura que la tabla ocupe todo el ancho */
     }
