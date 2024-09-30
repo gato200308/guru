@@ -125,7 +125,7 @@ td {
 }
 
 /* Media queries para dispositivos más pequeños */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .imagen-uniforme {
         object-fit:unset; /* Asegura que la imagen llene el espacio sin distorsionarse */
         margin: 15px;
