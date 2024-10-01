@@ -124,20 +124,78 @@ td {
     margin: 0 auto; /* Centra la imagen */
 }
 
-/* Media queries para dispositivos más pequeños */
-@media (max-width: 480px) {
-    .imagen-uniforme {
-        object-fit:unset; /* Asegura que la imagen llene el espacio sin distorsionarse */
-        margin: 15px;
+/* Estilos para pantallas mayores a 768px */
+@media (min-width: 768px) {
+    .navegacion-principal {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
     }
+    .productos img.imagen-uniforme {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    td {
+        text-align: center;
+        padding: 15px;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
     .navegacion-principal {
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly
-    } 
-    table {
-        width: 80%; /* Asegura que la tabla ocupe todo el ancho */
+        justify-content: space-between;
     }
+    
+    /* Mostrar las imágenes en dos columnas */
+    
+
+    td {
+        width: 50%; /* Cada imagen ocupará el 45% del ancho del contenedor */
+        margin-bottom: 20px;
+    }
+
+    .productos img.imagen-uniforme {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+
+/* Estilos para pantallas menores a 400px */
+@media (max-width: 400px) {
+    .navegacion-principal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Mostrar las imágenes una debajo de la otra */
+    table, tr, td {
+        display: block;
+        width: 100%;
+    }
+
+    td {
+        margin-bottom: 20px;
+    }
+
+    .productos img.imagen-uniforme {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+
+    
     header {
         background-color: #ddd590;
         color: rgb(255, 255, 255);
@@ -146,7 +204,7 @@ td {
         justify-content: space-between;
         align-items: center;
     }
-}
+
 
 .img-wha {
     width: 50px;
