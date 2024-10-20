@@ -1,6 +1,5 @@
 <?php
 // Este PHP es la conexión de sesión
-
 // Verifica si se han enviado datos por POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Configuración de la conexión a la base de datos
@@ -22,13 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $fechaNacimiento = $_POST['fechaNacimiento'];
-    $telefono = $_POST['telefono'];
-    $genero = $_POST['genero'];
+    $telefono = $_POST['telefono']; // Asegúrate de recibir esta variable
+    $genero = $_POST['genero']; // Asegúrate de recibir esta variable
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
-
-    // Encriptar la contraseña
-    $hashedContrasena = password_hash($contrasena, PASSWORD_DEFAULT);
 
     // Prepara la consulta SQL para verificar si el usuario ya existe
     $checkUserStmt = $conn->prepare("SELECT identificacion FROM usuario WHERE identificacion = ? OR correo = ?");
@@ -36,28 +32,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkUserStmt->execute();
     $checkUserStmt->store_result();
 
+    // Verifica si el usuario ya existe
     if ($checkUserStmt->num_rows > 0) {
         echo "Error: El usuario ya existe.";
     } else {
+        // Encriptar la contraseña
+        $hashedContrasena = password_hash($contrasena, PASSWORD_DEFAULT);
+        
         // Prepara la consulta SQL para insertar los datos en la tabla
         $stmt = $conn->prepare("INSERT INTO usuario (identificacion, nombres, apellidos, fecha_nacimiento, telefono, genero, correo, contrasena) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssssss", $identificacion, $nombre, $apellido, $fechaNacimiento, $telefono, $genero, $correo, $hashedContrasena);
-
+        
         // Ejecuta la consulta y verifica el resultado
         if ($stmt->execute()) {
-            // Cierra la conexión a la base de datos
-            $stmt->close();
-            $conn->close();
             // Redirige a la página de inicio de sesión
             header("Location: sesion.html");
             exit();
         } else { 
             echo "Error al registrar: " . $stmt->error;
         }
+        
+        // Cierra la declaración
+        $stmt->close();
     }
 
     // Cierra la consulta de verificación
     $checkUserStmt->close();
+    // Cierra la conexión a la base de datos
     $conn->close();
 } else {
     // Si no se reciben datos por POST, redirige a la página de registro
@@ -65,4 +66,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 ?>
-
