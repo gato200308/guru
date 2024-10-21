@@ -17,14 +17,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Recibe los datos del formulario
-    $identificacion = $_POST["identificacion"];
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $fechaNacimiento = $_POST['fechaNacimiento'];
-    $telefono = $_POST['telefono']; // Asegúrate de recibir esta variable
-    $genero = $_POST['genero']; // Asegúrate de recibir esta variable
-    $correo = $_POST['correo'];
-    $contrasena = $_POST['contrasena'];
+    $identificacion = trim($_POST["identificacion"]);
+    $nombre = trim($_POST['nombre']);
+    $apellido = trim($_POST['apellido']);
+    $fechaNacimiento = trim($_POST['fechaNacimiento']);
+    $telefono = trim($_POST['telefono']);
+    $genero = trim($_POST['genero']);
+    $correo = trim($_POST['correo']);
+    $contrasena = trim($_POST['contrasena']);
+
+    // Validar que todos los campos requeridos no estén vacíos
+    if (empty($identificacion) || empty($nombre) || empty($apellido) || empty($correo) || empty($contrasena)) {
+        echo "Por favor, complete todos los campos requeridos.";
+        exit();
+    }
 
     // Prepara la consulta SQL para verificar si el usuario ya existe
     $checkUserStmt = $conn->prepare("SELECT identificacion FROM usuario WHERE identificacion = ? OR correo = ?");
@@ -66,3 +72,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 ?>
+
