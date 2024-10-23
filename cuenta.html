@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,21 +19,27 @@
             <a href="registro.html">Registrarme</a>
         </nav>
     </header>
+
     
-    <img class="cuentas" src="imagenes/sinfoto.jpg" alt="sinfoto">
-    
-    <?php if ($row): ?>
-        <h2><?php echo htmlspecialchars($row['nombres']) . ' ' . htmlspecialchars($row['apellidos']); ?></h2>
-        <div class="gato">
-            <h3>Email</h3>
-            <p><?php echo htmlspecialchars($row['correo']); ?></p>
-            <h3>Teléfono</h3>
-            <p><?php echo htmlspecialchars($row['telefono']); ?></p>
-            <button type="submit">Editar Perfil</button>
-        </div>
-    <?php else: ?>
-        <h2>No se encontró información del usuario.</h2>
-    <?php endif; ?>
-    
+
+    <div id="usuario-info">
+        <!-- Aquí se mostrará la información del usuario -->
+    </div>
+
+    <script>
+        // Usar AJAX para obtener los datos del PHP
+        document.addEventListener("DOMContentLoaded", function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "cuenta.php", true);
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    document.getElementById("usuario-info").innerHTML = this.responseText;
+                } else {
+                    document.getElementById("usuario-info").innerHTML = "Error al cargar los datos.";
+                }
+            };
+            xhr.send();
+        });
+    </script>
 </body>
 </html>
