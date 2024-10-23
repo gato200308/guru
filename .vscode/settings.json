@@ -1,9 +1,0 @@
-{
-    "editor.cursorBlinking": "expand",
-    "terminal.integrated.cursorBlinking": true,
-    "editor.linkedEditing": true,
-    "php.linkedEditing.variables": true,
-    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-    "editor.guides.bracketPairs": true,
-    "breadcrumbs.enabled": false
-}
