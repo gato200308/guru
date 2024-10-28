@@ -83,3 +83,4 @@ $conn->close();
 
 // Incluir la página HTML aquí en lugar de redirigir
 include 'sesion_form.php'; // Incluir el archivo HTML del formulario
+?>

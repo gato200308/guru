@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fechaNacimiento = trim($_POST['fechaNacimiento']);
     $telefono = trim($_POST['telefono']);
     $genero = trim($_POST['genero']);
+    $rol = trim($_POST['rol']); // Añadir el rol
     $correo = trim($_POST['correo']);
     $contrasena = trim($_POST['contrasena']);
 
@@ -46,8 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hashedContrasena = password_hash($contrasena, PASSWORD_DEFAULT);
         
         // Prepara la consulta SQL para insertar los datos en la tabla
-        $stmt = $conn->prepare("INSERT INTO usuario (identificacion, nombres, apellidos, fecha_nacimiento, telefono, genero, correo, contrasena) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssssss", $identificacion, $nombre, $apellido, $fechaNacimiento, $telefono, $genero, $correo, $hashedContrasena);
+        $stmt = $conn->prepare("INSERT INTO usuario (identificacion, nombres, apellidos, fecha_nacimiento, telefono, genero, rol, correo, contrasena) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssiss", $identificacion, $nombre, $apellido, $fechaNacimiento, $telefono, $genero, $rol, $correo, $hashedContrasena);
         
         // Ejecuta la consulta y verifica el resultado
         if ($stmt->execute()) {
@@ -72,4 +73,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 ?>
-

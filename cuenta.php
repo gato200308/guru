@@ -21,20 +21,23 @@ if ($conn->connect_error) {
 }
 
 // Obtener la información del usuario
-$usuario_id = $_SESSION['usuario_id']; // Cambia esto según cómo almacenes la ID del usuario en la sesión
-
+$usuario_id = $_SESSION['usuario_id'];
 $sql = "SELECT identificacion, nombres, apellidos, fecha_nacimiento, telefono, correo FROM usuario WHERE identificacion = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $usuario_id);
+
+if (!$stmt) {
+    die("Error en la preparación de la consulta: " . $conn->error);
+}
+
+$stmt->bind_param("i", $usuario_id);
 $stmt->execute();
 $result = $stmt->get_result();
-$row = $result->fetch_assoc();
-
 $stmt->close();
 $conn->close();
 
 // Mostrar la información del usuario en formato HTML
-if ($row) {
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
     echo "<h2>" . htmlspecialchars($row['nombres']) . " " . htmlspecialchars($row['apellidos']) . "</h2>";
     echo "<div class='gato'>";
     echo "<h3>Email</h3>";
@@ -44,6 +47,6 @@ if ($row) {
     echo "<button type='submit'>Editar Perfil</button>";
     echo "</div>";
 } else {
-    echo "No se encontró información del usuario.";
+    echo "<p style='color: white;'>No se encontró información del usuario.</p>";
 }
 ?>
