@@ -25,7 +25,7 @@ $error = ''; // Inicializar la variable de error
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $identificacion = trim($_POST['identificacion'] ?? '');
     $correo = trim($_POST['correo'] ?? '');
-    $contrasena = trim($_POST['contrasena'] ?? '');
+    $contrasena = trim(string: $_POST['contrasena'] ?? '');
 
     // Validar que no estén vacíos
     if (empty($identificacion) || empty($correo) || empty($contrasena)) {

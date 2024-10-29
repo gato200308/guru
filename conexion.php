@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 } else {
     // Si no se reciben datos por POST, redirige a la página de registro
-    header("Location: sesion.html");
+    header("Location: registro.html");
     exit();
 }
 ?>
