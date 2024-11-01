@@ -5,15 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Primera Página Web</title>
     <link rel="stylesheet" href="styles.css">   
-
+    <link rel="icon" href="imagenes/icono app2.jpg" type="image/x-icon">
 </head>
 <body>
-    <h1>¡Bienvenido a mi página web!</h1>
-    <p>Este es un ejemplo básico de una página web creada con HTML, CSS y JavaScript.</p>
-    <button id="miBoton">Haz clic aquí</button>
+    <header class="site-header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                <a href="index.html"></a> <!-- Añadí un título como enlace -->
+            </div>
+            <nav class="navegacion-principal contenedor">
+                <a href="index.html">INICIO</a>
+                <a href="3semestre.html">3 semestre</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>¡Bienvenido a mi página web!</h1>
+        <p>Este es un ejemplo básico de una página web creada con HTML, CSS y JavaScript.</p>
+        <button onclick="exportToExcel()">Exportar a Excel</button>
+    </main>
+
+    <script>
+        function exportToExcel() {
+            window.location.href = 'export.php'; // Asegúrate de que export.php esté en el mismo directorio
+        }
+    </script>
 
     <script src="script.js"></script>
 </body>
 </html>
+
 
 

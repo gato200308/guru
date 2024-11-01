@@ -24,11 +24,32 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Verifica la conexión
 if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+    echo "<p>Error al conectar con la base de datos. Por favor, inténtalo más tarde.</p>";
+    exit(); // Detiene la ejecución si hay un error de conexión
+}
+
+// Obtener la identificación del usuario
+$identificacion = $_SESSION['identificacion'];
+
+// Manejar la solicitud de eliminación de cuenta
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_cuenta'])) {
+    // Eliminar la cuenta del usuario
+    $stmt = $conn->prepare("DELETE FROM usuario WHERE identificacion = ?");
+    $stmt->bind_param("s", $identificacion);
+
+    if ($stmt->execute()) {
+        // Cerrar sesión y redirigir a la página de inicio
+        session_destroy();
+        header("Location: index.html"); // Redirige a la página principal
+        exit();
+    } else {
+        echo "<p>Error al eliminar la cuenta. Por favor, inténtalo más tarde.</p>";
+    }
+
+    $stmt->close();
 }
 
 // Obtener la información del usuario
-$identificacion = $_SESSION['identificacion'];
 $stmt = $conn->prepare("SELECT nombres, apellidos, correo, telefono, rol FROM usuario WHERE identificacion = ?");
 $stmt->bind_param("s", $identificacion);
 $stmt->execute();
@@ -38,7 +59,7 @@ if ($stmt->num_rows > 0) {
     $stmt->bind_result($nombres, $apellidos, $correo, $telefono, $rol);
     $stmt->fetch();
 } else {
-    echo "No se encontraron datos para el usuario.";
+    echo "<p>No se encontraron datos para el usuario.</p>";
     exit();
 }
 
@@ -62,7 +83,7 @@ $conn->close();
                 <a href="index.html"></a>
             </div>
             <nav class="navegacion-principal contenedor">
-                <a href="index.php">INICIO</a>
+                <a href="index.html">INICIO</a>
                 <a href="cerrar_sesion.php">Cerrar sesión</a>
             </nav>
         </div>
@@ -76,11 +97,16 @@ $conn->close();
         <p><?php echo htmlspecialchars($telefono); ?></p>
 
         <!-- Mostrar el botón de subir producto solo si el rol es vendedor -->
-        <?php if ($rol == 1):?>
+        <?php if ($rol == 3): ?>
             <button type="button" onclick="window.open('subir_producto_form.php', 'popup', 'width=400,height=600');">Subir producto</button>
         <?php endif; ?>
-        
+
         <button type="button" onclick="location.href='editar_perfil.php'">Editar Perfil</button>
+        
+        <!-- Botón para eliminar cuenta -->
+        <form method="POST" style="display: inline;">
+            <button type="submit" name="eliminar_cuenta" style="color: white;" onclick="return confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');">Eliminar Cuenta</button>
+        </form>
     </div>
 </body>
 </html>
