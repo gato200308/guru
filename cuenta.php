@@ -24,18 +24,18 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Verifica la conexión
 if ($conn->connect_error) {
-    die("Conexión faloida: " . $conn->connect_error);
+    die("Conexión fallida: " . $conn->connect_error);
 }
 
 // Obtener la información del usuario
 $identificacion = $_SESSION['identificacion'];
-$stmt = $conn->prepare("SELECT nombres, apellidos, correo, telefono FROM usuario WHERE identificacion = ?");
+$stmt = $conn->prepare("SELECT nombres, apellidos, correo, telefono, rol FROM usuario WHERE identificacion = ?");
 $stmt->bind_param("s", $identificacion);
 $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
-    $stmt->bind_result($nombres, $apellidos, $correo, $telefono);
+    $stmt->bind_result($nombres, $apellidos, $correo, $telefono, $rol);
     $stmt->fetch();
 } else {
     echo "No se encontraron datos para el usuario.";
@@ -59,11 +59,10 @@ $conn->close();
     <header class="site-header">
         <div class="contenedor contenido-header">
             <div class="barra">
-                <a href="index.html">
-                </a>
+                <a href="index.html"></a>
             </div>
             <nav class="navegacion-principal contenedor">
-                <a href="index.html">INICIO</a>
+                <a href="index.php">INICIO</a>
                 <a href="cerrar_sesion.php">Cerrar sesión</a>
             </nav>
         </div>
@@ -75,6 +74,12 @@ $conn->close();
         <p><?php echo htmlspecialchars($correo); ?></p>
         <h3>Teléfono</h3>
         <p><?php echo htmlspecialchars($telefono); ?></p>
+
+        <!-- Mostrar el botón de subir producto solo si el rol es vendedor -->
+        <?php if ($rol == 1):?>
+            <button type="button" onclick="window.open('subir_producto_form.php', 'popup', 'width=400,height=600');">Subir producto</button>
+        <?php endif; ?>
+        
         <button type="button" onclick="location.href='editar_perfil.php'">Editar Perfil</button>
     </div>
 </body>

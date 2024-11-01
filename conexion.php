@@ -18,9 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Recibe los datos del formulario
     $identificacion = trim($_POST["identificacion"]);
-    $nombre = trim($_POST['nombre']);
-    $apellido = trim($_POST['apellido']);
-    $fechaNacimiento = trim($_POST['fechaNacimiento']);
+    $nombre = trim($_POST['nombres']); // Cambiado de 'nombre' a 'nombres'
+    $apellido = trim($_POST['apellidos']); // Cambiado de 'apellido' a 'apellidos'
+    $fechaNacimiento = trim($_POST['fecha_nacimiento']); // Cambiado de 'fechaNacimiento' a 'fecha_nacimiento'
     $telefono = trim($_POST['telefono']);
     $genero = trim($_POST['genero']);
     $rol = trim($_POST['rol']); // Añadir el rol
