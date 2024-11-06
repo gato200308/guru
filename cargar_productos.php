@@ -22,15 +22,19 @@ $result = $conn->query($sql);
 
 // Verifica si hay productos
 if ($result->num_rows > 0) {
+    echo '<table>'; // Asegúrate de envolver los productos en una tabla o un contenedor adecuado
     while ($row = $result->fetch_assoc()) {
+        // Formatear el precio sin decimales
+        $precioFormateado = number_format($row["precio"], 0, '.', ''); // Esto elimina los decimales
         // Imprimir cada producto
         echo '<td>';
         echo '<img class="imagen-uniforme" src="imagenes/productos/' . htmlspecialchars($row["imagen"]) . '" alt="' . htmlspecialchars($row["nombre"]) . '">';
         echo '<h3>' . htmlspecialchars($row["nombre"]) . '</h3>';
-        echo '<p>Precio: $' . htmlspecialchars($row["precio"]) . '</p>';
+        echo '<p>Precio: $' . $precioFormateado . '</p>'; // Usar el precio formateado aquí
         echo '<div class="button1"><button>Añadir al carrito</button></div>';
         echo '</td>';
     }
+    echo '</table>'; // Cerrar la tabla
 } else {
     echo "<p>No hay productos disponibles.</p>";
 }

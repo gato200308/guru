@@ -100,6 +100,10 @@ $conn->close();
         <?php if ($rol == 3): ?>
             <button type="button" onclick="window.open('subir_producto_form.php', 'popup', 'width=400,height=600');">Subir producto</button>
         <?php endif; ?>
+        <?php if ($rol == 3) {
+    echo '<button type="button" onclick="window.open(\'eliminar_producto_form.php\', \'popup\', \'width=600,height=400\');">Eliminar Producto</button>';}
+?>
+
 
         <button type="button" onclick="location.href='editar_perfil.php'">Editar Perfil</button>
         

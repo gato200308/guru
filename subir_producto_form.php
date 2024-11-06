@@ -25,10 +25,12 @@ if (!isset($_SESSION['identificacion'])) {
         <textarea name="descripcion" id="descripcion" required></textarea>
 
         <label for="precio">Precio:</label>
-        <input type="number" name="precio" id="precio" step="0.01" required>
+<input type="number" name="precio" id="precio" step="any" required>
+
 
         <label for="imagen">Imagen del Producto:</label>
         <input type="file" name="imagen" id="imagen" accept="image/*" required>
+        <p><small>Sube una imagen sin fondo para mejorar la presentación del producto.</small></p>
 
         <button type="submit">Subir Producto</button>
     </form>
