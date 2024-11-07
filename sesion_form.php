@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="imagenes/icono app2.jpg" type="image/x-icon">
-    <title>Inicio de Sesión</title>
+    <title>INICIO DE SESIÓN</title>
 </head>
 
 <body style="background-color: #ffffff;">
@@ -20,7 +20,7 @@
         <nav class="navegacion-principal contenedor">
             <a href="index.html">PRODUCTO</a>
             <a href="registro.html">REGÍSTRAME</a>
-            <a href="cuenta.php">Cuenta</a>
+            <a href="cuenta.php">CUENTA</a>
         </nav>
     </header>
 

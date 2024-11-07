@@ -7,7 +7,7 @@ session_start(); // Esto debe estar al principio
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
+    <title>PRODUCTOS</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="imagenes/icono app2.jpg" type="image/x-icon">
     <style>
@@ -50,12 +50,12 @@ session_start(); // Esto debe estar al principio
     </header>
     <main>
         <div class="producto">
-            <h3>Productos destacados</h3>
+            <h3>PRODUCTOS DESTACADOS</h3>
         </div>
         <form id="buscador-form">
             <div class="contenedor-busqueda"></div>
             <input type="text" id="barra-de-busqueda" placeholder="Buscar productos" required>
-            <button type="submit" id="btn-buscar">Buscar</button>
+            <button type="submit" id="btn-buscar">BUSCAR</button>
         </form>
         <div class="productos" id="productos-container"></div>
     </main>

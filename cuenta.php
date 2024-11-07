@@ -104,7 +104,13 @@ $conn->close();
     echo '<button type="button" onclick="window.open(\'eliminar_producto_form.php\', \'popup\', \'width=600,height=400\');">Eliminar Producto</button>';}
 ?>
 
+<button onclick="exportToExcel()">Exportar a Excel</button>
 
+    <script>
+        function exportToExcel() {
+            window.location.href = 'export.php'; // Asegúrate de que export.php esté en el mismo directorio
+        }
+    </script>
         <button type="button" onclick="location.href='editar_perfil.php'">Editar Perfil</button>
         
         <!-- Botón para eliminar cuenta -->

@@ -12,7 +12,7 @@ if (!isset($_SESSION['identificacion'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir Producto</title>
+    <title>SUBIR PRODUCTO</title>
     <link rel="stylesheet" href="styles_producto.css">
     <link rel="icon" href="imagenes/icono app2.jpg" type="image/x-icon">
 </head>
