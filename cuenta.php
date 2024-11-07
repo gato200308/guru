@@ -84,7 +84,7 @@ $conn->close();
             </div>
             <nav class="navegacion-principal contenedor">
                 <a href="index.html">INICIO</a>
-                <a href="cerrar_sesion.php">Cerrar sesión</a>
+                <a href="cerrar_sesion.php">CERRAR SESIÓN</a>
             </nav>
         </div>
     </header>

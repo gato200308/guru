@@ -45,7 +45,7 @@ session_start(); // Esto debe estar al principio
             <a href="sesion.html">SESION</a>
             <a href="index.html">PRODUCTOS</a>
             <a href="contacto.html">CONTACTO</a>
-            <a href="cuenta.php">Cuenta</a>
+            <a href="cuenta.php">CUENTA</a>
         </nav>
     </header>
     <main>
