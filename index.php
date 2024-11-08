@@ -11,6 +11,29 @@ session_start(); // Esto debe estar al principio
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="imagenes/icono app2.jpg" type="image/x-icon">
     <style>
+        /* Estilos del loader */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ddd590; /* Color de fondo del loader */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        #loader img.logo {
+            max-width: 150px; /* Ajusta el tamaño del logo */
+            margin: 20px;
+        }
+        #loader img.gif {
+            max-width: 120px; /* Ajusta el tamaño del GIF */
+            margin: 20px;
+        }
+
         /* Estilo para el contenedor de productos */
         .productos {
             display: grid;
@@ -33,11 +56,17 @@ session_start(); // Esto debe estar al principio
         /* Estilos para la animación del título */
         h1 {
             opacity: 0; /* Inicialmente invisible */
-            transition: opacity 1s ease; /* Transición para desvanecer */
+            transition: opacity 2s ease; /* Transición más lenta */
         }
     </style>
 </head>
 <body>
+    <!-- Loader -->
+    <div id="loader">
+        <img src="imagenes/letras Berlin Sans FB.png" alt="Logo de carga" class="logo">
+        <img src="imagenes/negrogif.gif" alt="Cargando" class="gif">
+    </div>
+
     <header>
         <h1 id="titulo">Bienvenidos a Guru</h1>
         <nav class="navegacion-principal contenedor">
@@ -77,7 +106,7 @@ session_start(); // Esto debe estar al principio
                     // Dejar el texto visible al finalizar
                     tituloElement.style.opacity = '1'; // Mantener visible
                 }
-            }, 500); // Tiempo entre letras
+            }, 700); // Tiempo más lento entre letras
         }
 
         // Cargar productos desde el archivo PHP
@@ -116,10 +145,14 @@ session_start(); // Esto debe estar al principio
                 });
         }
 
-        // Iniciar la animación del título al cargar la página
+        // Iniciar la animación del título y ocultar el loader al cargar la página
         document.addEventListener('DOMContentLoaded', () => {
             animarTitulo(); // Animar título
             cargarProductos(); // Cargar productos
+            document.body.classList.add("loaded"); // Ocultar el loader
+            setTimeout(() => {
+                document.getElementById("loader").style.display = "none"; // Esconde el loader tras la carga
+            }, 6000); 
         });
 
         // Función para filtrar productos
