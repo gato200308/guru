@@ -70,7 +70,6 @@ session_start(); // Asegurarse de iniciar la sesión al principio del archivo
     <header>
         <h1 id="titulo">Bienvenidos a Guru</h1>
         <nav class="navegacion-principal contenedor">
-            <a href="portafolio.html">PORTAFOLIO</a>
             <a href="sesion.html">SESION</a>
             <a href="index.php">PRODUCTOS</a>
             <a href="contacto.html">CONTACTO</a>
