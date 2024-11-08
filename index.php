@@ -1,5 +1,5 @@
 <?php
-session_start(); // Esto debe estar al principio
+session_start(); // Asegurarse de iniciar la sesión al principio del archivo
 ?>
 
 <!DOCTYPE html>
@@ -26,11 +26,11 @@ session_start(); // Esto debe estar al principio
             z-index: 1000;
         }
         #loader img.logo {
-            max-width: 150px; /* Ajusta el tamaño del logo */
+            max-width: 300px; /* Ajusta el tamaño del logo */
             margin: 20px;
         }
         #loader img.gif {
-            max-width: 120px; /* Ajusta el tamaño del GIF */
+            max-width: 300px; /* Ajusta el tamaño del GIF */
             margin: 20px;
         }
 
@@ -72,7 +72,7 @@ session_start(); // Esto debe estar al principio
         <nav class="navegacion-principal contenedor">
             <a href="portafolio.html">PORTAFOLIO</a>
             <a href="sesion.html">SESION</a>
-            <a href="index.html">PRODUCTOS</a>
+            <a href="index.php">PRODUCTOS</a>
             <a href="contacto.html">CONTACTO</a>
             <a href="cuenta.php">CUENTA</a>
         </nav>
@@ -89,6 +89,16 @@ session_start(); // Esto debe estar al principio
         <div class="productos" id="productos-container"></div>
     </main>
     <script>
+        // Verificar si la animación ya se mostró en esta sesión
+        if (!sessionStorage.getItem('animacionMostrada')) {
+            // Si nunca se ha mostrado, configurar para mostrar la animación con el tiempo normal
+            sessionStorage.setItem('animacionMostrada', 'true');
+            var esPrimeraVisita = true; // Es la primera vez que se accede a la página
+        } else {
+            // Si ya se mostró antes, configurar para mostrar la animación pero más rápida
+            var esPrimeraVisita = false;
+        }
+
         // Función para animar el título
         function animarTitulo() {
             const texto = "Bienvenidos a Guru";
@@ -106,7 +116,7 @@ session_start(); // Esto debe estar al principio
                     // Dejar el texto visible al finalizar
                     tituloElement.style.opacity = '1'; // Mantener visible
                 }
-            }, 700); // Tiempo más lento entre letras
+            }, esPrimeraVisita ? 700 : 100); // Tiempo más rápido si no es la primera visita
         }
 
         // Cargar productos desde el archivo PHP
@@ -149,10 +159,11 @@ session_start(); // Esto debe estar al principio
         document.addEventListener('DOMContentLoaded', () => {
             animarTitulo(); // Animar título
             cargarProductos(); // Cargar productos
-            document.body.classList.add("loaded"); // Ocultar el loader
+
+            // Mostrar el loader por un tiempo más largo si es la primera visita, y corto si no lo es
             setTimeout(() => {
-                document.getElementById("loader").style.display = "none"; // Esconde el loader tras la carga
-            }, 6000); 
+                document.getElementById("loader").style.display = "none"; // Ocultar el loader tras la carga
+            }, esPrimeraVisita ? 7000 : 2000); // 7000ms si es la primera vez, 2000ms si no lo es
         });
 
         // Función para filtrar productos
