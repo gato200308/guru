@@ -103,7 +103,7 @@ $conn->close();
         <?php if ($rol == 3) {
     echo '<button type="button" onclick="window.open(\'eliminar_producto_form.php\', \'popup\', \'width=600,height=400\');">Eliminar Producto</button>';}
 ?>
-
+<?php if ($rol == 1): ?>
 <button onclick="exportToExcel()">Exportar a Excel</button>
 
     <script>
@@ -111,12 +111,14 @@ $conn->close();
             window.location.href = 'export.php'; // Asegúrate de que export.php esté en el mismo directorio
         }
     </script>
+    <?php endif; ?>
         <button type="button" onclick="location.href='editar_perfil.php'">Editar Perfil</button>
         
         <!-- Botón para eliminar cuenta -->
         <form method="POST" style="display: inline;">
             <button type="submit" name="eliminar_cuenta" style="color: white;" onclick="return confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');">Eliminar Cuenta</button>
         </form>
+        
     </div>
 </body>
 </html>
