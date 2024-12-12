@@ -81,7 +81,7 @@ input, select {
 
 button {
     background-color: #ddd590;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
@@ -226,7 +226,7 @@ td {
 }
 
 h2, h3, p {
-    color: #fff; /* Color de texto */
+    color: #000000; /* Color de texto */
 }
 
 .imagen-contacto,
