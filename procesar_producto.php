@@ -1,38 +1,75 @@
 <?php
+// Iniciar sesión para verificar autenticación
 session_start();
 if (!isset($_SESSION['identificacion'])) {
     header("Location: sesion.html");
     exit();
 }
 
-$conexion = new mysqli('localhost', 'root', '', 'guru');
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+// Configuración de la base de datos
+$host = 'localhost';  // o la dirección de tu servidor de base de datos
+$dbname = 'guru';  // El nombre de tu base de datos
+$username = 'root';  // Tu usuario de base de datos
+$password = '';  // Tu contraseña de base de datos
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Error de conexión: " . $e->getMessage());
 }
 
-$nombre = $_POST['nombre'];
-$descripcion = $_POST['descripcion'];
-$precio = $_POST['precio'];
-$imagen = $_FILES['imagen'];
-$vendedor_id = $_SESSION['identificacion'];  // Obtén el ID del vendedor desde la sesión
+// Verificar si el formulario fue enviado
+if (isset($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_FILES['imagen'])) {
+    // Obtener los datos del formulario
+    $nombre = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
+    $precio = $_POST['precio'];
+    $vendedor_id = $_SESSION['identificacion']; // Asignar el vendedor_id desde la sesión
 
-$ruta_imagen = 'imagenes_productos/' . basename($imagen['name']);
-if (!move_uploaded_file($imagen['tmp_name'], $ruta_imagen)) {
-    die("Error al mover el archivo de imagen.");
-}
+    // Subir la imagen
+    $imagen_tmp = $_FILES['imagen']['tmp_name'];
+    $imagen_nombre = $_FILES['imagen']['name'];
+    $imagen_error = $_FILES['imagen']['error'];
 
-// Inserta el producto en la base de datos con el vendedor_id
-$sql = "INSERT INTO productos (nombre, descripcion, precio, imagen_url, vendedor_id) VALUES (?, ?, ?, ?, ?)";
-$stmt = $conexion->prepare($sql);
-$stmt->bind_param("ssdsi", $nombre, $descripcion, $precio, $ruta_imagen, $vendedor_id);
+    // Definir la carpeta destino
+    $upload_dir = "imagenes/"; // Carpeta donde se guardarán las imágenes
 
-if ($stmt->execute()) {
-    echo "Producto subido exitosamente.";
+    // Comprobar si hubo error en la subida de la imagen
+    if ($imagen_error === UPLOAD_ERR_OK) {
+        // Generar un nombre único para la imagen
+        $imagen_destino = $upload_dir . uniqid() . "_" . basename($imagen_nombre);
+
+        // Mover la imagen a la carpeta destino
+        if (move_uploaded_file($imagen_tmp, $imagen_destino)) {
+            // Preparar la consulta SQL para insertar el producto en la base de datos
+            $stmt = $pdo->prepare("INSERT INTO productos (nombre, descripcion, precio, imagen_url, vendedor_id) VALUES (:nombre, :descripcion, :precio, :imagen_url, :vendedor_id)");
+
+            // Ejecutar la consulta
+            $stmt->execute([
+                ':nombre' => $nombre,
+                ':descripcion' => $descripcion,
+                ':precio' => $precio,
+                ':imagen_url' => $imagen_destino,
+                ':vendedor_id' => $vendedor_id
+            ]);
+
+            // Redirigir al formulario con un mensaje de éxito
+            header("Location: subir_producto_form.php?mensaje=¡Producto subido con éxito!");
+            exit();
+        } else {
+            // Error al mover la imagen
+            header("Location: subir_producto_form.php?mensaje=Hubo un error al subir la imagen.");
+            exit();
+        }
+    } else {
+        // Error al subir la imagen
+        header("Location: subir_producto_form.php?mensaje=No se ha subido ninguna imagen o ha ocurrido un error.");
+        exit();
+    }
 } else {
-    echo "Error al subir el producto: " . $stmt->error;
+    // Si faltan campos en el formulario
+    header("Location: subir_producto_form.php?mensaje=Por favor, completa todos los campos del formulario.");
+    exit();
 }
-
-$stmt->close();
-$conexion->close();
-
 ?>

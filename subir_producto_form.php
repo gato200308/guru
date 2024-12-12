@@ -1,5 +1,5 @@
 <?php
-// Asegúrate de que solo los usuarios autenticados puedan acceder a esta página
+// Iniciar sesión para verificar autenticación
 session_start();
 if (!isset($_SESSION['identificacion'])) {
     header("Location: sesion.html");
@@ -25,8 +25,7 @@ if (!isset($_SESSION['identificacion'])) {
         <textarea name="descripcion" id="descripcion" required></textarea>
 
         <label for="precio">Precio:</label>
-<input type="number" name="precio" id="precio" step="any" required>
-
+        <input type="number" name="precio" id="precio" step="any" required>
 
         <label for="imagen">Imagen del Producto:</label>
         <input type="file" name="imagen" id="imagen" accept="image/*" required>
@@ -34,6 +33,22 @@ if (!isset($_SESSION['identificacion'])) {
 
         <button type="submit">Subir Producto</button>
     </form>
+
+    <!-- Agregar el script para mostrar la alerta con el mensaje -->
+    <script>
+        // Esta función se ejecuta cuando la página se carga
+        window.onload = function() {
+            // Obtener el parámetro 'mensaje' de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const mensaje = urlParams.get('mensaje');
+            
+            // Si hay un mensaje, mostrar el alert
+            if (mensaje) {
+                alert(mensaje); // Muestra el mensaje en una alerta
+            }
+        };
+    </script>
+
     <footer>
         <p>&copy; 2024 Guru Sales</p>
     </footer>

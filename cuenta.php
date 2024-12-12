@@ -116,7 +116,7 @@ $conn->close();
         
         <!-- Botón para eliminar cuenta -->
         <form method="POST" style="display: inline;">
-            <button type="submit" name="eliminar_cuenta" style="color: white;" onclick="return confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');">Eliminar Cuenta</button>
+            <button type="submit" name="eliminar_cuenta"  onclick="return confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');">Eliminar Cuenta</button>
         </form>
         
     </div>
