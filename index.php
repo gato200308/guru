@@ -14,6 +14,20 @@ if (isset($_POST['add_to_cart'])) {
     // Agregar el producto al carrito
     $_SESSION['carrito'][] = ['producto' => $producto, 'precio' => $precio];
 }
+// Conexión a la base de datos
+$conexion = new mysqli('localhost', 'root', '', 'guru');
+if ($conexion->connect_error) {
+    die('Error de conexión: ' . $conexion->connect_error);
+}
+
+// Consulta para obtener los productos
+$productos = [];
+$resultado = $conexion->query("SELECT vendedor_id, nombre, imagen_url, precio FROM productos");
+if ($resultado && $resultado->num_rows > 0) {
+    while ($row = $resultado->fetch_assoc()) {
+        $productos[] = $row;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -78,14 +92,14 @@ if (isset($_POST['add_to_cart'])) {
     <header>
         <h1 id="titulo">Bienvenidos a Guru</h1>
         <nav class="navegacion-principal contenedor">
-        <a href="sesion.html">SESION</a>
-        <a href="index.php">PRODUCTOS</a>
-        <a href="contacto.html">CONTACTO</a>
-        <a href="cuenta.php">CUENTA</a>
-        <a href="carrito.php" class="carrito-enlace">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAABV0lEQVR4nLWVTyuEURTGf0WhNFnIQgk12SmfwG4s2NhIWVPzBSSysGSrrHwAErMQCzUrY2cpFnaz1EiRKfl3dfWot0lzz33feZ86m3PPeX63+77nXoAa4BLxDtwCS3RYtRbQX3wDM+SobmBTsDNy1iDwCbwB/YFap0itKxnM5w1al8F+3qBJGXwAXy1mLhDJujpQCsHqbQycEeSjGgLtqfAy5dFtae0iBJpVof8DhyJBXcC91sohUC/QVPFyJGhB+QegD4NO1XBOnK7Vt2FtKKvBD2/B2FNSzwswYAWNJI5n0dhTVf0OkbpR44GhdkoXsj+B4VjQtkDPQE+g9sh4o/yracOQukT4cZhI+3Q8GSFNYJUMOpTRWhYTi+YEetUw+mHOTbsR3+kRKGaBrQB3ej7agRpZQeNABTgBxgz51Kokdu1NQ/mOgI4N+dTyx+J37M1GDflf/QC6iamAjtlFMgAAAABJRU5ErkJggg==" alt="Carrito" title="Ver carrito">
-        </a>
-    </nav>
+            <a href="sesion.html">SESION</a>
+            <a href="index.php">PRODUCTOS</a>
+            <a href="contacto.html">CONTACTO</a>
+            <a href="cuenta.php">CUENTA</a>
+            <a href="carrito.php" class="carrito-enlace">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAABV0lEQVR4nLWVTyuEURTGf0WhNFnIQgk12SmfwG4s2NhIWVPzBSSysGSrrHwAErMQCzUrY2cpFnaz1EiRKfl3dfWot0lzz33feZ86m3PPeX63+77nXoAa4BLxDtwCS3RYtRbQX3wDM+SobmBTsDNy1iDwCbwB/YFap0itKxnM5w1al8F+3qBJGXwAXy1mLhDJujpQCsHqbQycEeSjGgLtqfAy5dFtae0iBJpVof8DhyJBXcC91sohUC/QVPFyJGhB+QegD4NO1XBOnK7Vt2FtKKvBD2/B2FNSzwswYAWNJI5n0dhTVf0OkbpR44GhdkoXsj+B4VjQtkDPQE+g9sh4o/yracOQukT4cZhI+3Q8GSFNYJUMOpTRWhYTi+YEetUw+mHOTbsR3+kRKGaBrQB3ej7agRpZQeNABTgBxgz51Kokdu1NQ/mOgI4N+dTyx+J37M1GDflf/QC6iamAjtlFMgAAAABJRU5ErkJggg==" alt="Carrito" title="Ver carrito">
+            </a>
+        </nav>
     </header>
 
     <main>
@@ -185,7 +199,7 @@ if (isset($_POST['add_to_cart'])) {
         });
     </script>
     <footer>
-        <p>&copy; 2024 Guru Sales</p>
+        <p>&copy; 2024 Guru Sales
     </footer>
 </body>
 </html>
