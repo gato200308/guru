@@ -9,7 +9,7 @@ session_start();
 
 // Verifica si el usuario ha iniciado sesión
 if (!isset($_SESSION['identificacion'])) {
-    header("Location: sesion.html"); // Redirige a la página de inicio de sesión si no está autenticado
+    header("Location: sesion.html");
     exit();
 }
 
@@ -25,29 +25,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Verifica la conexión
 if ($conn->connect_error) {
     echo "<p>Error al conectar con la base de datos. Por favor, inténtalo más tarde.</p>";
-    exit(); // Detiene la ejecución si hay un error de conexión
+    exit();
 }
 
 // Obtener la identificación del usuario
 $identificacion = $_SESSION['identificacion'];
-
-// Manejar la solicitud de eliminación de cuenta
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_cuenta'])) {
-    // Eliminar la cuenta del usuario
-    $stmt = $conn->prepare("DELETE FROM usuario WHERE identificacion = ?");
-    $stmt->bind_param("s", $identificacion);
-
-    if ($stmt->execute()) {
-        // Cerrar sesión y redirigir a la página de inicio
-        session_destroy();
-        header("Location: index.html"); // Redirige a la página principal
-        exit();
-    } else {
-        echo "<p>Error al eliminar la cuenta. Por favor, inténtalo más tarde.</p>";
-    }
-
-    $stmt->close();
-}
 
 // Obtener la información del usuario
 $stmt = $conn->prepare("SELECT nombres, apellidos, correo, telefono, rol FROM usuario WHERE identificacion = ?");
@@ -89,36 +71,57 @@ $conn->close();
         </div>
     </header>
 
-    <div>
+    <div class="contenido-cuenta">
         <h2><?php echo htmlspecialchars($nombres . " " . $apellidos); ?></h2>
         <h3>Email</h3>
         <p><?php echo htmlspecialchars($correo); ?></p>
         <h3>Teléfono</h3>
         <p><?php echo htmlspecialchars($telefono); ?></p>
 
-        <!-- Mostrar el botón de subir producto solo si el rol es vendedor -->
+        <!-- Subir producto (solo si el rol es 3) -->
         <?php if ($rol == 3): ?>
-            <button type="button" onclick="window.open('subir_producto_form.php', 'popup', 'width=400,height=600');">Subir producto</button>
+            <form class="boton2" action="subir_producto_form.php" method="get">
+                <button type="submit">Subir producto</button>
+            </form>
         <?php endif; ?>
-        <?php if ($rol == 3) {
-    echo '<button type="button" onclick="window.open(\'eliminar_producto_form.php\', \'popup\', \'width=600,height=400\');">Eliminar Producto</button>';}
-?>
-<?php if ($rol == 1): ?>
-<button onclick="exportToExcel()">Exportar a Excel</button>
 
-    <script>
-        function exportToExcel() {
-            window.location.href = 'export.php'; // Asegúrate de que export.php esté en el mismo directorio
-        }
-    </script>
-    <?php endif; ?>
-        <button type="button" onclick="location.href='editar_perfil.php'">Editar Perfil</button>
-        
-        <!-- Botón para eliminar cuenta -->
-        <form method="POST" style="display: inline;">
-            <button type="submit" name="eliminar_cuenta"  onclick="return confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');">Eliminar Cuenta</button>
+        <!-- Eliminar cuenta -->
+        <form class="boton2" method="POST" style="display: inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');">
+            <button type="submit" name="eliminar_cuenta">Eliminar Cuenta</button>
         </form>
-        
+
+        <!-- Eliminar producto (solo si el rol es 3) -->
+        <?php if ($rol == 3): ?>
+            <form class="boton2" action="eliminar_producto_form.php" method="get">
+                <button type="submit">Eliminar Producto</button>
+            </form>
+        <?php endif; ?>
+
+        <!-- Exportar a Excel (solo si el rol es 1) -->
+        <?php if ($rol == 1): ?>
+            <form class="boton2" action="export.php" method="get">
+                <button type="submit">Exportar a Excel</button>
+            </form>
+        <?php endif; ?>
+
+        <!-- Editar perfil -->
+        <form class="boton2" action="editar_perfil.php" method="get">
+            <button type="submit">Editar Perfil</button>
+        </form>
     </div>
+
+    <!-- JavaScript para mostrar el alert -->
+    <script>
+        window.onload = function() {
+            // Obtener el parámetro 'mensaje' de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const mensaje = urlParams.get('mensaje');
+            
+            // Si hay un mensaje, mostrarlo en una alerta
+            if (mensaje) {
+                alert(mensaje); // Muestra el mensaje en un alert
+            }
+        };
+    </script>
 </body>
 </html>

@@ -29,7 +29,7 @@ if ($conn->connect_error) {
 }
 
 // Manejar la solicitud de eliminación de productos
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_productos'], $_POST['producto_ids'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_productos'], $_POST['producto_ids']) && !empty($_POST['producto_ids'])) {
     $producto_ids = $_POST['producto_ids'];
 
     // Preparar la declaración SQL para eliminar múltiples productos
@@ -40,12 +40,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_productos'],
     $stmt->bind_param(str_repeat('i', count($producto_ids)), ...$producto_ids);
 
     if ($stmt->execute()) {
-        echo "<p>Productos eliminados con éxito.</p>";
+        // Si la eliminación es exitosa
+        header("Location: cuenta.php?mensaje=Productos eliminados con éxito.");
+        exit();
     } else {
-        echo "<p>Error al eliminar los productos. Por favor, inténtalo más tarde.</p>";
+        // Error al eliminar productos
+        header("Location: cuenta.php?mensaje=Hubo un error al eliminar los productos.");
+        exit();
     }
 
     $stmt->close();
+} else {
+    // Si no se recibieron IDs de productos o hubo otro error
+    header("Location: cuenta.php?mensaje=No se seleccionaron productos para eliminar.");
+    exit();
 }
 
 $conn->close();

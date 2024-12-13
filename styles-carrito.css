@@ -1,0 +1,117 @@
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #5a4d41;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+/* Estilos para el Carrito de Compras */
+table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #e1e1e1;
+    font-weight: bold;
+}
+
+table td img {
+    width: 100px; /* Tamaño de la imagen */
+    height: auto;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Total del carrito */
+.total-carrito {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: right;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 2px solid #ddd;
+    margin-top: 20px;
+}
+
+/* Enlaces y botones */
+a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #5a4d41;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 10px 0;
+    display: inline-block;
+}
+
+a:hover {
+    background-color: #4a3c32;
+}
+
+a:active {
+    background-color: #3a2c22;
+}
+
+/* Estilos para el "Vaciar Carrito" */
+a#vaciar-carrito {
+    background-color: #e74c3c;
+}
+
+a#vaciar-carrito:hover {
+    background-color: #c0392b;
+}
+
+/* Diseño Responsivo */
+@media (max-width: 768px) {
+    table th, table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    table td img {
+        width: 80px;
+    }
+
+    .total-carrito {
+        font-size: 1.2rem;
+    }
+}
+
+/* Estilo del Carrito Vacío */
+.carrito-vacio {
+    font-size: 1.2rem;
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 50px;
+}

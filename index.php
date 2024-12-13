@@ -1,5 +1,19 @@
 <?php
-session_start(); // Asegurarse de iniciar la sesión al principio del archivo
+session_start(); // Asegúrate de iniciar la sesión al principio del archivo
+
+// Si el carrito no existe en la sesión, lo creamos como un arreglo vacío
+if (!isset($_SESSION['carrito'])) {
+    $_SESSION['carrito'] = [];
+}
+
+// Función para agregar producto al carrito
+if (isset($_POST['add_to_cart'])) {
+    $producto = $_POST['producto'];
+    $precio = $_POST['precio'];
+
+    // Agregar el producto al carrito
+    $_SESSION['carrito'][] = ['producto' => $producto, 'precio' => $precio];
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +32,7 @@ session_start(); // Asegurarse de iniciar la sesión al principio del archivo
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #ddd590; /* Color de fondo del loader */
+            background-color: #ddd590;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -26,37 +40,31 @@ session_start(); // Asegurarse de iniciar la sesión al principio del archivo
             z-index: 1000;
         }
         #loader img.logo {
-            max-width: 300px; /* Ajusta el tamaño del logo */
+            max-width: 300px;
             margin: 20px;
         }
         #loader img.gif {
-            max-width: 300px; /* Ajusta el tamaño del GIF */
+            max-width: 300px;
             margin: 20px;
         }
-
-        /* Estilo para el contenedor de productos */
         .productos {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-            gap: 20px; /* Espacio entre los productos */
-            margin-top: 20px; /* Espacio superior */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
         }
-
         .producto {
-            border-radius: 5px; /* Bordes redondeados */
-            padding: 10px; /* Espaciado interno */
-            text-align: center; /* Centrar texto */
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
         }
-
         .imagen-uniforme {
-            max-width: 100%; /* Imagen se ajusta al contenedor */
-            height: auto; /* Mantiene proporciones */
+            max-width: 100%;
+            height: auto;
         }
-
-        /* Estilos para la animación del título */
         h1 {
-            opacity: 0; /* Inicialmente invisible */
-            transition: opacity 2s ease; /* Transición más lenta */
+            opacity: 0;
+            transition: opacity 2s ease;
         }
     </style>
 </head>
@@ -70,55 +78,54 @@ session_start(); // Asegurarse de iniciar la sesión al principio del archivo
     <header>
         <h1 id="titulo">Bienvenidos a Guru</h1>
         <nav class="navegacion-principal contenedor">
-            <a href="sesion.html">SESION</a>
-            <a href="index.php">PRODUCTOS</a>
-            <a href="contacto.html">CONTACTO</a>
-            <a href="cuenta.php">CUENTA</a>
-        </nav>
+        <a href="sesion.html">SESION</a>
+        <a href="index.php">PRODUCTOS</a>
+        <a href="contacto.html">CONTACTO</a>
+        <a href="cuenta.php">CUENTA</a>
+        <a href="carrito.php" class="carrito-enlace">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAABV0lEQVR4nLWVTyuEURTGf0WhNFnIQgk12SmfwG4s2NhIWVPzBSSysGSrrHwAErMQCzUrY2cpFnaz1EiRKfl3dfWot0lzz33feZ86m3PPeX63+77nXoAa4BLxDtwCS3RYtRbQX3wDM+SobmBTsDNy1iDwCbwB/YFap0itKxnM5w1al8F+3qBJGXwAXy1mLhDJujpQCsHqbQycEeSjGgLtqfAy5dFtae0iBJpVof8DhyJBXcC91sohUC/QVPFyJGhB+QegD4NO1XBOnK7Vt2FtKKvBD2/B2FNSzwswYAWNJI5n0dhTVf0OkbpR44GhdkoXsj+B4VjQtkDPQE+g9sh4o/yracOQukT4cZhI+3Q8GSFNYJUMOpTRWhYTi+YEetUw+mHOTbsR3+kRKGaBrQB3ej7agRpZQeNABTgBxgz51Kokdu1NQ/mOgI4N+dTyx+J37M1GDflf/QC6iamAjtlFMgAAAABJRU5ErkJggg==" alt="Carrito" title="Ver carrito">
+        </a>
+    </nav>
     </header>
+
     <main>
         <div class="producto">
             <h3>PRODUCTOS DESTACADOS</h3>
         </div>
         <form id="buscador-form">
-            <div class="contenedor-busqueda"></div>
             <input type="text" id="barra-de-busqueda" placeholder="Buscar productos" required>
             <button type="submit" id="btn-buscar">BUSCAR</button>
         </form>
         <div class="productos" id="productos-container"></div>
     </main>
+
     <script>
         // Verificar si la animación ya se mostró en esta sesión
         if (!sessionStorage.getItem('animacionMostrada')) {
-            // Si nunca se ha mostrado, configurar para mostrar la animación con el tiempo normal
             sessionStorage.setItem('animacionMostrada', 'true');
-            var esPrimeraVisita = true; // Es la primera vez que se accede a la página
+            var esPrimeraVisita = true;
         } else {
-            // Si ya se mostró antes, configurar para mostrar la animación pero más rápida
             var esPrimeraVisita = false;
         }
 
-        // Función para animar el título
         function animarTitulo() {
             const texto = "Bienvenidos a Guru";
             const tituloElement = document.getElementById('titulo');
-            tituloElement.textContent = ''; // Limpiar el texto inicial
+            tituloElement.textContent = '';
             let index = 0;
 
             const interval = setInterval(() => {
                 if (index < texto.length) {
-                    tituloElement.textContent += texto[index]; // Agregar letra
-                    tituloElement.style.opacity = '1'; // Hacer visible
+                    tituloElement.textContent += texto[index];
+                    tituloElement.style.opacity = '1';
                     index++;
                 } else {
                     clearInterval(interval);
-                    // Dejar el texto visible al finalizar
-                    tituloElement.style.opacity = '1'; // Mantener visible
+                    tituloElement.style.opacity = '1';
                 }
-            }, esPrimeraVisita ? 700 : 100); // Tiempo más rápido si no es la primera visita
+            }, esPrimeraVisita ? 700 : 100);
         }
 
-        // Cargar productos desde el archivo PHP
         function cargarProductos() {
             fetch('obtener_productos.php')
                 .then(response => {
@@ -129,22 +136,20 @@ session_start(); // Asegurarse de iniciar la sesión al principio del archivo
                 })
                 .then(productos => {
                     const contenedor = document.getElementById('productos-container');
-                    contenedor.innerHTML = ''; // Limpiar contenedor antes de agregar nuevos productos
-
-                    if (productos.error) {
-                        console.error('Error al cargar los productos:', productos.error);
-                        contenedor.innerHTML = '<p>No se pudieron cargar los productos.</p>'; // Mensaje de error
-                        return;
-                    }
+                    contenedor.innerHTML = '';
 
                     productos.forEach(producto => {
                         const divProducto = document.createElement('div');
-                        divProducto.className = 'producto'; // Asignar clase para estilos
+                        divProducto.className = 'producto';
                         divProducto.innerHTML = `
                             <img class='imagen-uniforme' src='${producto.imagen_url}' alt='${producto.nombre}'>
                             <h3>${producto.nombre}</h3>
                             <p>Precio: $${producto.precio}</p>
-                            <div class='button1'><button>Añadir al carrito</button></div>
+                            <form method="POST" action="">
+                                <input type="hidden" name="producto" value="${producto.nombre}">
+                                <input type="hidden" name="precio" value="${producto.precio}">
+                                <button type="submit" name="add_to_cart">Añadir al carrito</button>
+                            </form>
                         `;
                         contenedor.appendChild(divProducto);
                     });
@@ -154,20 +159,17 @@ session_start(); // Asegurarse de iniciar la sesión al principio del archivo
                 });
         }
 
-        // Iniciar la animación del título y ocultar el loader al cargar la página
         document.addEventListener('DOMContentLoaded', () => {
-            animarTitulo(); // Animar título
-            cargarProductos(); // Cargar productos
+            animarTitulo();
+            cargarProductos();
 
-            // Mostrar el loader por un tiempo más largo si es la primera visita, y corto si no lo es
             setTimeout(() => {
-                document.getElementById("loader").style.display = "none"; // Ocultar el loader tras la carga
-            }, esPrimeraVisita ? 7000 : 2000); // 7000ms si es la primera vez, 2000ms si no lo es
+                document.getElementById("loader").style.display = "none";
+            }, esPrimeraVisita ? 7000 : 2000);
         });
 
-        // Función para filtrar productos
         document.getElementById('buscador-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevenir el envío del formulario
+            e.preventDefault();
 
             const query = document.getElementById('barra-de-busqueda').value.toLowerCase();
             const productos = document.querySelectorAll('.producto');
@@ -175,9 +177,9 @@ session_start(); // Asegurarse de iniciar la sesión al principio del archivo
             productos.forEach((producto) => {
                 const nombre = producto.querySelector('h3') ? producto.querySelector('h3').textContent.toLowerCase() : '';
                 if (nombre.includes(query)) {
-                    producto.style.display = ''; // Mostrar el producto
+                    producto.style.display = '';
                 } else {
-                    producto.style.display = 'none'; // Ocultar el producto
+                    producto.style.display = 'none';
                 }
             });
         });

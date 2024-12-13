@@ -69,7 +69,7 @@ main {
 }
 
 form {
-    max-width: 400px;
+    
     margin: 0 auto;
 }
 
@@ -255,4 +255,8 @@ h2, h3, p {
     text-align: center;
 }
 
-
+form.boton2 {
+    display: flex;
+    flex-direction: row;
+    margin-block: 10px;
+}

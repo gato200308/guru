@@ -5,6 +5,12 @@ if (!isset($_SESSION['identificacion'])) {
     header("Location: sesion.html");
     exit();
 }
+
+// Verificar si existe el mensaje en la URL
+if (isset($_GET['mensaje'])) {
+    $mensaje = $_GET['mensaje'];
+    echo "<script>alert('$mensaje');</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,24 +39,8 @@ if (!isset($_SESSION['identificacion'])) {
 
         <button type="submit">Subir Producto</button>
     </form>
-
-    <!-- Agregar el script para mostrar la alerta con el mensaje -->
-    <script>
-        // Esta función se ejecuta cuando la página se carga
-        window.onload = function() {
-            // Obtener el parámetro 'mensaje' de la URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const mensaje = urlParams.get('mensaje');
-            
-            // Si hay un mensaje, mostrar el alert
-            if (mensaje) {
-                alert(mensaje); // Muestra el mensaje en una alerta
-            }
-        };
-    </script>
-
-    <footer>
-        <p>&copy; 2024 Guru Sales</p>
-    </footer>
+    <form action="cuenta.php">
+    <button type="submit">salir</button>
+</form>
 </body>
 </html>

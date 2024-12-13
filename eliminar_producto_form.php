@@ -37,7 +37,7 @@ $result = $conn->query("SELECT id, nombre,imagen_url FROM productos");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles_eliminarP.css">
     <title>Eliminar Productos</title>
     <style>
         .producto {
@@ -71,7 +71,9 @@ $result = $conn->query("SELECT id, nombre,imagen_url FROM productos");
         ?>
         <button type="submit" name="eliminar_productos" onclick="return confirm('¿Estás seguro de que deseas eliminar estos productos? Esta acción no se puede deshacer.');">Eliminar Seleccionados</button>
     </form>
-    <button onclick="window.close();">Cerrar</button>
+    <form class="boton2" action="cuenta.php" method="get">
+            <button type="submit">cerrar</button>
+        </form>
 </body>
 </html>
 

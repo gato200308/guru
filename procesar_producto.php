@@ -54,22 +54,22 @@ if (isset($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_FILES['im
                 ':vendedor_id' => $vendedor_id
             ]);
 
-            // Redirigir al formulario con un mensaje de éxito
-            header("Location: subir_producto_form.php?mensaje=¡Producto subido con éxito!");
+            // Redirigir a cuenta.php con un mensaje de éxito
+            header("Location: cuenta.php?mensaje=¡Producto subido con éxito!");
             exit();
         } else {
             // Error al mover la imagen
-            header("Location: subir_producto_form.php?mensaje=Hubo un error al subir la imagen.");
+            header("Location: cuenta.php?mensaje=Hubo un error al subir la imagen.");
             exit();
         }
     } else {
         // Error al subir la imagen
-        header("Location: subir_producto_form.php?mensaje=No se ha subido ninguna imagen o ha ocurrido un error.");
+        header("Location: cuenta.php?mensaje=No se ha subido ninguna imagen o ha ocurrido un error.");
         exit();
     }
 } else {
     // Si faltan campos en el formulario
-    header("Location: subir_producto_form.php?mensaje=Por favor, completa todos los campos del formulario.");
+    header("Location: cuenta.php?mensaje=Por favor, completa todos los campos del formulario.");
     exit();
 }
 ?>

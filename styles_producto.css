@@ -14,8 +14,6 @@ body {
 form {
     background-color: #444;
     padding: 2em;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
     max-width: 400px;
     width: 90%;
 }
@@ -52,7 +50,7 @@ button[type="submit"] {
     color: #3a3737;
     font-size: 1.1em;
     padding: 10px 15px;
-    border: none;
+    
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
@@ -70,4 +68,13 @@ footer {
     width: 100%;
     position: fixed;
     bottom: 0;
+}
+.boton2{
+    background-color: #ddd590;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
 }
