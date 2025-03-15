@@ -66,7 +66,7 @@ $resultado = $conexion->query($sql);
             margin-top: 20px;
         }
         .button:hover {
-            background-color: #0056b3;
+            background-color: #94cf70;
         }
     </style>
 </head>
