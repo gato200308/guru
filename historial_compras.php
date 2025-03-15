@@ -20,37 +20,38 @@ $resultado = $conexion->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial de Compras</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
         .container {
             max-width: 1000px;
-            margin: 20px auto;
+            margin: 0 auto;
             background-color: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         h1 {
-            color: black;
+            color: #333;
             text-align: center;
-            margin-bottom: 30px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background-color: white;
         }
         th, td {
             padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #ddd590;
-            color: black;
+            border-bottom: 1px solid #ddd;
         }
         th {
-            background-color: #ddd590;
-            color: black;
-            font-weight: bold;
+            background-color: #007bff;
+            color: white;
         }
         tr:hover {
             background-color: #f5f5f5;
@@ -58,38 +59,21 @@ $resultado = $conexion->query($sql);
         .button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #ddd590;
-            color: black;
+            background-color: #007bff;
+            color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 5px;
             margin-top: 20px;
-            font-weight: bold;
         }
         .button:hover {
-            background-color: #92b839;
-        }
-        .no-compras {
-            color: black;
-            text-align: center;
-            padding: 20px;
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Historial de Compras</h1>
-        <nav class="navegacion-principal contenedor">
-            <a href="sesion.html">SESION</a>
-            <a href="index.php">PRODUCTOS</a>
-            <a href="contacto.html">CONTACTO</a>
-            <a href="cuenta.php">CUENTA</a>
-            <a href="carrito.php" class="carrito-enlace">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAABV0lEQVR4nLWVTyuEURTGf0WhNFnIQgk12SmfwG4s2NhIWVPzBSSysGSrrHwAErMQCzUrY2cpFnaz1EiRKfl3dfWot0lzz33feZ86m3PPeX63+77nXoAa4BLxDtwCS3RYtRbQX3wDM+SobmBTsDNy1iDwCbwB/YFap0itKxnM5w1al8F+3qBJGXwAXy1mLhDJujpQCsHqbQycEeSjGgLtqfAy5dFtae0iBJpVof8DhyJBXcC91sohUC/QVPFyJGhB+QegD4NO1XBOnK7Vt2FtKKvBD2/B2FNSzwswYAWNJI5n0dhTVf0OkbpR44GhdkoXsj+B4VjQtkDPQE+g9sh4o/yracOQukT4cZhI+3Q8GSFNYJUMOpTRWhYTi+YEetUw+mHOTbsR3+kRKGaBrQB3ej7agRpZQeNABTgBxgz51Kokdu1NQ/mOgI4N+dTyx+J37M1GDflf/QC6iamAjtlFMgAAAABJRU5ErkJggg==" alt="Carrito" title="Ver carrito">
-            </a>
-        </nav>
-    </header>
-
     <div class="container">
+        <h1>Historial de Compras</h1>
+        
         <?php if ($resultado->num_rows > 0): ?>
             <table>
                 <tr>
@@ -111,15 +95,11 @@ $resultado = $conexion->query($sql);
                 <?php endwhile; ?>
             </table>
         <?php else: ?>
-            <p class="no-compras">No hay compras registradas.</p>
+            <p>No hay compras registradas.</p>
         <?php endif; ?>
         
         <a href="index.php" class="button">Volver al Inicio</a>
     </div>
-
-    <footer>
-        <p>&copy; 2024 GURU. Todos los derechos reservados.</p>
-    </footer>
 </body>
 </html>
 
