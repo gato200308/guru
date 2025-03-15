@@ -133,15 +133,7 @@ $conn->close();
             gap: 20px;
         }
 
-        .navegacion-principal a {
-            color: #333;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-       
+        
 
         .notificacion {
             position: fixed;
