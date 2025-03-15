@@ -67,6 +67,15 @@ $conn->close();
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
+        .navegacion-principal {
+            background-color: #ddd590;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: end;
+            gap: 20px;
+        }
         .contenido-cuenta h2 {
             color: #333;
             margin-bottom: 25px;
