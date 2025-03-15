@@ -141,10 +141,7 @@ $conn->close();
             transition: all 0.3s ease;
         }
 
-        .navegacion-principal a:hover {
-            background-color: #94cf70;
-            color: white;
-        }
+       
 
         .notificacion {
             position: fixed;
