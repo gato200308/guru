@@ -129,7 +129,7 @@ $conn->close();
             margin-bottom: 30px;
             border-radius: 5px;
             display: flex;
-            justify-content: center;
+            justify-content: end;
             gap: 20px;
         }
 
