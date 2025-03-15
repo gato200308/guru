@@ -253,7 +253,9 @@ $conn->close();
             </form>
 
             <!-- Eliminar cuenta -->
-            <button class="boton2 eliminar-cuenta" onclick="mostrarConfirmacion()">Eliminar Cuenta</button>
+            <form class="boton2 eliminar-cuenta" style="display: inline;">
+                <button type="button" onclick="mostrarConfirmacion()">Eliminar Cuenta</button>
+            </form>
         </div>
     </div>
 
