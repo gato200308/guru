@@ -59,7 +59,7 @@ $resultado = $conexion->query($sql);
         .button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #a38746;
             color: white;
             text-decoration: none;
             border-radius: 5px;
