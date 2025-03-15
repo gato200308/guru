@@ -50,7 +50,7 @@ $resultado = $conexion->query($sql);
             border-bottom: 1px solid #ddd;
         }
         th {
-            background-color: black;
+            background-color: #ddd590;
             color: white;
         }
         tr:hover {
