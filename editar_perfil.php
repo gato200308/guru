@@ -169,7 +169,7 @@ $conn->close();
 </head>
 <body>
     <nav class="navegacion-principal">
-        <a href="index.php">INICIO</a>
+        <a href="index.html">INICIO</a>
         <a href="cuenta.php">CUENTA</a>
         <a href="cerrar_sesion.php">CERRAR SESIÓN</a>
     </nav>
