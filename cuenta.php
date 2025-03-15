@@ -127,6 +127,82 @@ $conn->close();
         .eliminar-cuenta button:hover {
             background-color: #cc0000;
         }
+
+        .modal-confirmacion {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-contenido {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .modal-confirmacion.mostrar .modal-contenido {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-confirmacion h3 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .modal-confirmacion p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .botones-confirmacion {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn-confirmar, .btn-cancelar {
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-confirmar {
+            background-color: #ff6b6b;
+            color: white;
+        }
+
+        .btn-confirmar:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        .btn-cancelar {
+            background-color: #ddd590;
+            color: #333;
+        }
+
+        .btn-cancelar:hover {
+            background-color: #94cf70;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -177,11 +253,50 @@ $conn->close();
             </form>
 
             <!-- Eliminar cuenta -->
-            <form class="boton2 eliminar-cuenta" method="POST" style="display: inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');">
-                <button type="submit" name="eliminar_cuenta">Eliminar Cuenta</button>
-            </form>
+            <button class="boton2 eliminar-cuenta" onclick="mostrarConfirmacion()">Eliminar Cuenta</button>
         </div>
     </div>
+
+    <div class="modal-confirmacion" id="modal-eliminar">
+        <div class="modal-contenido">
+            <h3>¿Estás seguro?</h3>
+            <p>Esta acción eliminará permanentemente tu cuenta y todos tus datos. Esta acción no se puede deshacer.</p>
+            <div class="botones-confirmacion">
+                <button class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+                <button class="btn-confirmar" onclick="eliminarCuenta()">Eliminar Cuenta</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function mostrarConfirmacion() {
+            const modal = document.getElementById('modal-eliminar');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('mostrar');
+            }, 10);
+        }
+
+        function cerrarModal() {
+            const modal = document.getElementById('modal-eliminar');
+            modal.classList.remove('mostrar');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        function eliminarCuenta() {
+            window.location.href = 'eliminar_cuenta.php';
+        }
+
+        // Cerrar modal si se hace clic fuera de él
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal-eliminar');
+            if (event.target == modal) {
+                cerrarModal();
+            }
+        }
+    </script>
 
     <!-- JavaScript para mostrar el alert -->
     <script>
