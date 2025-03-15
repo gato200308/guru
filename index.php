@@ -80,6 +80,25 @@ if ($resultado && $resultado->num_rows > 0) {
             opacity: 0;
             transition: opacity 2s ease;
         }
+        .notificacion {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #94cf70;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notificacion.mostrar {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -113,6 +132,8 @@ if ($resultado && $resultado->num_rows > 0) {
         </form>
         <div class="productos" id="productos-container"></div>
     </main>
+
+    <div id="notificacion" class="notificacion"></div>
 
     <script>
         // Variable para almacenar todos los productos
@@ -195,6 +216,16 @@ if ($resultado && $resultado->num_rows > 0) {
                 });
         }
 
+        function mostrarNotificacion(mensaje) {
+            const notificacion = document.getElementById('notificacion');
+            notificacion.textContent = mensaje;
+            notificacion.classList.add('mostrar');
+            
+            setTimeout(() => {
+                notificacion.classList.remove('mostrar');
+            }, 2000);
+        }
+
         function agregarAlCarrito(event) {
             event.preventDefault();
             mostrarLoader();
@@ -209,12 +240,12 @@ if ($resultado && $resultado->num_rows > 0) {
             .then(response => response.text())
             .then(data => {
                 ocultarLoader();
-                alert('Producto añadido al carrito');
+                mostrarNotificacion('Producto añadido al carrito');
             })
             .catch(error => {
                 console.error('Error:', error);
                 ocultarLoader();
-                alert('Error al añadir el producto al carrito');
+                mostrarNotificacion('Error al añadir el producto');
             });
 
             return false;
