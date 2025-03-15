@@ -24,60 +24,49 @@ $resultado = $conexion->query($sql);
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             background-color: #f0f0f0;
         }
-        
         .container {
-            max-width: 800px;
-            margin: 20px auto;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
             padding: 20px;
-            background-color: #ddd590;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            background-color: white;
-            border-radius: 5px;
+            margin-top: 20px;
         }
-        
         th, td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
-        
         th {
-            background-color: #ddd590;
-            color: #333;
+            background-color: black;
+            color: white;
         }
-        
         tr:hover {
             background-color: #f5f5f5;
         }
-        
         .button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #333;
+            background-color: #007bff;
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            margin-top: 20px;
         }
-        
         .button:hover {
-            background-color: #555;
-        }
-        
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
+            background-color: #0056b3;
         }
     </style>
 </head>
