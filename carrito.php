@@ -63,7 +63,6 @@ if ($conexion->connect_error) {
         .btn {
             display: inline-block;
             padding: 12px 25px;
-            background-color: #a38746;
             color: white;
             text-decoration: none;
             border-radius: 5px;
