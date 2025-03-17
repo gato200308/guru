@@ -63,7 +63,6 @@ if ($conexion->connect_error) {
         .btn {
             display: inline-block;
             padding: 12px 25px;
-            color: white;
             text-decoration: none;
             border-radius: 5px;
             transition: all 0.3s ease;
@@ -192,7 +191,14 @@ if ($conexion->connect_error) {
                 </tr>
             </table>
             <div class="action-buttons">
-                <a href="procesar_pago.php" class="btn"><i class="fas fa-credit-card"></i>Proceder al Pago</a>
+            <?php
+                    if (isset($_SESSION['identificacion'])) {
+                        $url_pago = "procesar_pago.php";
+                    } else {
+                        $url_pago = "sesion.html";
+                    }
+                ?>
+                <a href="<?= $url_pago ?>" class="btn"><i class="fas fa-credit-card"></i> Proceder al Pago</a>
                 <a href="eliminar-carrito.php" class="btn"><i class="fas fa-trash"></i>Vaciar Carrito</a>
                 <a href="index.php" class="btn"><i class="fas fa-shopping-bag"></i>Seguir Comprando</a>
             </div>

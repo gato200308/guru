@@ -1,6 +1,10 @@
 <?php
 session_start();
-
+// Verifica si el usuario ha iniciado sesión
+if (!isset($_SESSION['identificacion'])) {
+    header("Location: sesion.html"); // Redirige a la página de inicio de sesión si no está autenticado
+    exit();
+}
 // Conectar a la base de datos
 $conexion = new mysqli('localhost', 'root', '', 'guru');
 
@@ -8,6 +12,9 @@ $conexion = new mysqli('localhost', 'root', '', 'guru');
 if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
+
+
+
 
 // Obtener el historial de compras
 $sql = "SELECT * FROM historial_compras ORDER BY fecha DESC";
